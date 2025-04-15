@@ -28,228 +28,243 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panelLeft = new System.Windows.Forms.Panel();
-            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
-            this.lblCompanySlogan = new System.Windows.Forms.Label();
-            this.lblWelcomeBack = new System.Windows.Forms.Label();
-            this.panelRight = new System.Windows.Forms.Panel();
-            this.lblSignUp = new System.Windows.Forms.LinkLabel();
-            this.lblNoAccount = new System.Windows.Forms.Label();
-            this.btnGirisYap = new System.Windows.Forms.Button();
-            this.txtSifre = new System.Windows.Forms.TextBox();
-            this.lblSifre = new System.Windows.Forms.Label();
-            this.txtKullaniciAdi = new System.Windows.Forms.TextBox();
-            this.lblKullaniciAdi = new System.Windows.Forms.Label();
-            this.lblDescription = new System.Windows.Forms.Label();
-            this.lblLoginTitle = new System.Windows.Forms.Label();
-            this.btnIptal = new System.Windows.Forms.Button();
-            this.panelLeft.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
-            this.panelRight.SuspendLayout();
-            this.SuspendLayout();
+            panelLeft = new Panel();
+            pictureBoxLogo = new PictureBox();
+            lblCompanySlogan = new Label();
+            lblWelcomeBack = new Label();
+            panelRight = new Panel();
+            lblSignUp = new LinkLabel();
+            lblNoAccount = new Label();
+            btnGirisYap = new Button();
+            txtSifre = new TextBox();
+            lblSifre = new Label();
+            txtKullaniciAdi = new TextBox();
+            lblKullaniciAdi = new Label();
+            lblDescription = new Label();
+            lblLoginTitle = new Label();
+            btnIptal = new Button();
+            panelLeft.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
+            panelRight.SuspendLayout();
+            SuspendLayout();
             // 
             // panelLeft
             // 
-            this.panelLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.panelLeft.Controls.Add(this.pictureBoxLogo);
-            this.panelLeft.Controls.Add(this.lblCompanySlogan);
-            this.panelLeft.Controls.Add(this.lblWelcomeBack);
-            this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelLeft.Location = new System.Drawing.Point(0, 0);
-            this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(350, 500);
-            this.panelLeft.TabIndex = 0;
+            panelLeft.BackColor = Color.FromArgb(0, 122, 204);
+            panelLeft.Controls.Add(pictureBoxLogo);
+            panelLeft.Controls.Add(lblCompanySlogan);
+            panelLeft.Controls.Add(lblWelcomeBack);
+            panelLeft.Dock = DockStyle.Left;
+            panelLeft.Location = new Point(0, 0);
+            panelLeft.Margin = new Padding(4, 3, 4, 3);
+            panelLeft.Name = "panelLeft";
+            panelLeft.Size = new Size(408, 577);
+            panelLeft.TabIndex = 0;
             // 
             // pictureBoxLogo
             // 
-            this.pictureBoxLogo.Location = new System.Drawing.Point(115, 100);
-            this.pictureBoxLogo.Name = "pictureBoxLogo";
-            this.pictureBoxLogo.Size = new System.Drawing.Size(120, 120);
-            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxLogo.TabIndex = 2;
-            this.pictureBoxLogo.TabStop = false;
+            pictureBoxLogo.Location = new Point(134, 115);
+            pictureBoxLogo.Margin = new Padding(4, 3, 4, 3);
+            pictureBoxLogo.Name = "pictureBoxLogo";
+            pictureBoxLogo.Size = new Size(140, 138);
+            pictureBoxLogo.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBoxLogo.TabIndex = 2;
+            pictureBoxLogo.TabStop = false;
             // 
             // lblCompanySlogan
             // 
-            this.lblCompanySlogan.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblCompanySlogan.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblCompanySlogan.Location = new System.Drawing.Point(40, 290);
-            this.lblCompanySlogan.Name = "lblCompanySlogan";
-            this.lblCompanySlogan.Size = new System.Drawing.Size(270, 60);
-            this.lblCompanySlogan.TabIndex = 1;
-            this.lblCompanySlogan.Text = "Deniz Yolculuğunda Güvenilir Tercihiniz";
+            lblCompanySlogan.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            lblCompanySlogan.ForeColor = Color.WhiteSmoke;
+            lblCompanySlogan.Location = new Point(47, 335);
+            lblCompanySlogan.Margin = new Padding(4, 0, 4, 0);
+            lblCompanySlogan.Name = "lblCompanySlogan";
+            lblCompanySlogan.Size = new Size(315, 69);
+            lblCompanySlogan.TabIndex = 1;
+            lblCompanySlogan.Text = "Deniz Yolculuğunda Güvenilir Tercihiniz";
             // 
             // lblWelcomeBack
             // 
-            this.lblWelcomeBack.AutoSize = true;
-            this.lblWelcomeBack.Font = new System.Drawing.Font("Segoe UI", 35F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblWelcomeBack.ForeColor = System.Drawing.Color.White;
-            this.lblWelcomeBack.Location = new System.Drawing.Point(36, 220);
-            this.lblWelcomeBack.Name = "lblWelcomeBack";
-            this.lblWelcomeBack.Size = new System.Drawing.Size(301, 62);
-            this.lblWelcomeBack.TabIndex = 0;
-            this.lblWelcomeBack.Text = "Hoşgeldiniz!";
+            lblWelcomeBack.AutoSize = true;
+            lblWelcomeBack.Font = new Font("Segoe UI", 35F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            lblWelcomeBack.ForeColor = Color.White;
+            lblWelcomeBack.Location = new Point(42, 254);
+            lblWelcomeBack.Margin = new Padding(4, 0, 4, 0);
+            lblWelcomeBack.Name = "lblWelcomeBack";
+            lblWelcomeBack.Size = new Size(301, 62);
+            lblWelcomeBack.TabIndex = 0;
+            lblWelcomeBack.Text = "Hoşgeldiniz!";
             // 
             // panelRight
             // 
-            this.panelRight.BackColor = System.Drawing.Color.White;
-            this.panelRight.Controls.Add(this.lblSignUp);
-            this.panelRight.Controls.Add(this.lblNoAccount);
-            this.panelRight.Controls.Add(this.btnGirisYap);
-            this.panelRight.Controls.Add(this.txtSifre);
-            this.panelRight.Controls.Add(this.lblSifre);
-            this.panelRight.Controls.Add(this.txtKullaniciAdi);
-            this.panelRight.Controls.Add(this.lblKullaniciAdi);
-            this.panelRight.Controls.Add(this.lblDescription);
-            this.panelRight.Controls.Add(this.lblLoginTitle);
-            this.panelRight.Controls.Add(this.btnIptal);
-            this.panelRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelRight.Location = new System.Drawing.Point(350, 0);
-            this.panelRight.Name = "panelRight";
-            this.panelRight.Size = new System.Drawing.Size(350, 500);
-            this.panelRight.TabIndex = 1;
+            panelRight.BackColor = Color.White;
+            panelRight.Controls.Add(lblSignUp);
+            panelRight.Controls.Add(lblNoAccount);
+            panelRight.Controls.Add(btnGirisYap);
+            panelRight.Controls.Add(txtSifre);
+            panelRight.Controls.Add(lblSifre);
+            panelRight.Controls.Add(txtKullaniciAdi);
+            panelRight.Controls.Add(lblKullaniciAdi);
+            panelRight.Controls.Add(lblDescription);
+            panelRight.Controls.Add(lblLoginTitle);
+            panelRight.Controls.Add(btnIptal);
+            panelRight.Dock = DockStyle.Fill;
+            panelRight.Location = new Point(408, 0);
+            panelRight.Margin = new Padding(4, 3, 4, 3);
+            panelRight.Name = "panelRight";
+            panelRight.Size = new Size(409, 577);
+            panelRight.TabIndex = 1;
             // 
             // lblSignUp
             // 
-            this.lblSignUp.AutoSize = true;
-            this.lblSignUp.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblSignUp.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.lblSignUp.Location = new System.Drawing.Point(179, 355);
-            this.lblSignUp.Name = "lblSignUp";
-            this.lblSignUp.Size = new System.Drawing.Size(53, 17);
-            this.lblSignUp.TabIndex = 11;
-            this.lblSignUp.TabStop = true;
-            this.lblSignUp.Text = "Kayıt Ol";
-            this.lblSignUp.Click += new System.EventHandler(this.lblSignUp_Click);
+            lblSignUp.AutoSize = true;
+            lblSignUp.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            lblSignUp.LinkColor = Color.FromArgb(0, 122, 204);
+            lblSignUp.Location = new Point(209, 410);
+            lblSignUp.Margin = new Padding(4, 0, 4, 0);
+            lblSignUp.Name = "lblSignUp";
+            lblSignUp.Size = new Size(53, 17);
+            lblSignUp.TabIndex = 11;
+            lblSignUp.TabStop = true;
+            lblSignUp.Text = "Kayıt Ol";
+            lblSignUp.Click += lblSignUp_Click;
             // 
             // lblNoAccount
             // 
-            this.lblNoAccount.AutoSize = true;
-            this.lblNoAccount.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblNoAccount.ForeColor = System.Drawing.Color.DimGray;
-            this.lblNoAccount.Location = new System.Drawing.Point(100, 355);
-            this.lblNoAccount.Name = "lblNoAccount";
-            this.lblNoAccount.Size = new System.Drawing.Size(85, 17);
-            this.lblNoAccount.TabIndex = 10;
-            this.lblNoAccount.Text = "Hesabın yok?";
+            lblNoAccount.AutoSize = true;
+            lblNoAccount.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            lblNoAccount.ForeColor = Color.DimGray;
+            lblNoAccount.Location = new Point(117, 410);
+            lblNoAccount.Margin = new Padding(4, 0, 4, 0);
+            lblNoAccount.Name = "lblNoAccount";
+            lblNoAccount.Size = new Size(85, 17);
+            lblNoAccount.TabIndex = 10;
+            lblNoAccount.Text = "Hesabın yok?";
             // 
             // btnGirisYap
             // 
-            this.btnGirisYap.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnGirisYap.FlatAppearance.BorderSize = 0;
-            this.btnGirisYap.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGirisYap.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnGirisYap.ForeColor = System.Drawing.Color.White;
-            this.btnGirisYap.Location = new System.Drawing.Point(40, 300);
-            this.btnGirisYap.Name = "btnGirisYap";
-            this.btnGirisYap.Size = new System.Drawing.Size(270, 45);
-            this.btnGirisYap.TabIndex = 2;
-            this.btnGirisYap.Text = "Giriş";
-            this.btnGirisYap.UseVisualStyleBackColor = false;
-            this.btnGirisYap.Click += new System.EventHandler(this.btnGirisYap_Click);
+            btnGirisYap.BackColor = Color.FromArgb(0, 122, 204);
+            btnGirisYap.FlatAppearance.BorderSize = 0;
+            btnGirisYap.FlatStyle = FlatStyle.Flat;
+            btnGirisYap.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnGirisYap.ForeColor = Color.White;
+            btnGirisYap.Location = new Point(47, 346);
+            btnGirisYap.Margin = new Padding(4, 3, 4, 3);
+            btnGirisYap.Name = "btnGirisYap";
+            btnGirisYap.Size = new Size(315, 52);
+            btnGirisYap.TabIndex = 2;
+            btnGirisYap.Text = "Giriş";
+            btnGirisYap.UseVisualStyleBackColor = false;
+            btnGirisYap.Click += btnGirisYap_Click;
             // 
             // txtSifre
             // 
-            this.txtSifre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSifre.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtSifre.ForeColor = System.Drawing.Color.DimGray;
-            this.txtSifre.Location = new System.Drawing.Point(40, 240);
-            this.txtSifre.Name = "txtSifre";
-            this.txtSifre.Size = new System.Drawing.Size(270, 29);
-            this.txtSifre.TabIndex = 1;
-            this.txtSifre.Text = "Şifrenizi giriniz";
+            txtSifre.BorderStyle = BorderStyle.FixedSingle;
+            txtSifre.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            txtSifre.ForeColor = Color.DimGray;
+            txtSifre.Location = new Point(47, 277);
+            txtSifre.Margin = new Padding(4, 3, 4, 3);
+            txtSifre.Name = "txtSifre";
+            txtSifre.Size = new Size(315, 29);
+            txtSifre.TabIndex = 1;
+            txtSifre.Text = "Şifrenizi giriniz";
             // 
             // lblSifre
             // 
-            this.lblSifre.AutoSize = true;
-            this.lblSifre.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblSifre.ForeColor = System.Drawing.Color.DimGray;
-            this.lblSifre.Location = new System.Drawing.Point(40, 220);
-            this.lblSifre.Name = "lblSifre";
-            this.lblSifre.Size = new System.Drawing.Size(37, 17);
-            this.lblSifre.TabIndex = 7;
-            this.lblSifre.Text = "Şifre:";
+            lblSifre.AutoSize = true;
+            lblSifre.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            lblSifre.ForeColor = Color.DimGray;
+            lblSifre.Location = new Point(47, 254);
+            lblSifre.Margin = new Padding(4, 0, 4, 0);
+            lblSifre.Name = "lblSifre";
+            lblSifre.Size = new Size(37, 17);
+            lblSifre.TabIndex = 7;
+            lblSifre.Text = "Şifre:";
             // 
             // txtKullaniciAdi
             // 
-            this.txtKullaniciAdi.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtKullaniciAdi.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtKullaniciAdi.ForeColor = System.Drawing.Color.DimGray;
-            this.txtKullaniciAdi.Location = new System.Drawing.Point(40, 180);
-            this.txtKullaniciAdi.Name = "txtKullaniciAdi";
-            this.txtKullaniciAdi.Size = new System.Drawing.Size(270, 29);
-            this.txtKullaniciAdi.TabIndex = 0;
-            this.txtKullaniciAdi.Text = "Kullanıcı adınızı giriniz";
+            txtKullaniciAdi.BorderStyle = BorderStyle.FixedSingle;
+            txtKullaniciAdi.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            txtKullaniciAdi.ForeColor = Color.DimGray;
+            txtKullaniciAdi.Location = new Point(47, 208);
+            txtKullaniciAdi.Margin = new Padding(4, 3, 4, 3);
+            txtKullaniciAdi.Name = "txtKullaniciAdi";
+            txtKullaniciAdi.Size = new Size(315, 29);
+            txtKullaniciAdi.TabIndex = 0;
+            txtKullaniciAdi.Text = "Kullanıcı adınızı giriniz";
             // 
             // lblKullaniciAdi
             // 
-            this.lblKullaniciAdi.AutoSize = true;
-            this.lblKullaniciAdi.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblKullaniciAdi.ForeColor = System.Drawing.Color.DimGray;
-            this.lblKullaniciAdi.Location = new System.Drawing.Point(40, 160);
-            this.lblKullaniciAdi.Name = "lblKullaniciAdi";
-            this.lblKullaniciAdi.Size = new System.Drawing.Size(81, 17);
-            this.lblKullaniciAdi.TabIndex = 5;
-            this.lblKullaniciAdi.Text = "Kullanıcı Adı:";
+            lblKullaniciAdi.AutoSize = true;
+            lblKullaniciAdi.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            lblKullaniciAdi.ForeColor = Color.DimGray;
+            lblKullaniciAdi.Location = new Point(47, 185);
+            lblKullaniciAdi.Margin = new Padding(4, 0, 4, 0);
+            lblKullaniciAdi.Name = "lblKullaniciAdi";
+            lblKullaniciAdi.Size = new Size(81, 17);
+            lblKullaniciAdi.TabIndex = 5;
+            lblKullaniciAdi.Text = "Kullanıcı Adı:";
             // 
             // lblDescription
             // 
-            this.lblDescription.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblDescription.ForeColor = System.Drawing.Color.DimGray;
-            this.lblDescription.Location = new System.Drawing.Point(40, 110);
-            this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(270, 40);
-            this.lblDescription.TabIndex = 4;
-            this.lblDescription.Text = "Uludağ Deniz Otobüsleri sistemine giriş yapmak için bilgilerinizi giriniz.";
+            lblDescription.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            lblDescription.ForeColor = Color.DimGray;
+            lblDescription.Location = new Point(47, 127);
+            lblDescription.Margin = new Padding(4, 0, 4, 0);
+            lblDescription.Name = "lblDescription";
+            lblDescription.Size = new Size(315, 46);
+            lblDescription.TabIndex = 4;
+            lblDescription.Text = "Uludağ Deniz Otobüsleri sistemine giriş yapmak için bilgilerinizi giriniz.";
             // 
             // lblLoginTitle
             // 
-            this.lblLoginTitle.AutoSize = true;
-            this.lblLoginTitle.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblLoginTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.lblLoginTitle.Location = new System.Drawing.Point(37, 60);
-            this.lblLoginTitle.Name = "lblLoginTitle";
-            this.lblLoginTitle.Size = new System.Drawing.Size(88, 45);
-            this.lblLoginTitle.TabIndex = 3;
-            this.lblLoginTitle.Text = "Giriş";
+            lblLoginTitle.AutoSize = true;
+            lblLoginTitle.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            lblLoginTitle.ForeColor = Color.FromArgb(0, 122, 204);
+            lblLoginTitle.Location = new Point(43, 69);
+            lblLoginTitle.Margin = new Padding(4, 0, 4, 0);
+            lblLoginTitle.Name = "lblLoginTitle";
+            lblLoginTitle.Size = new Size(88, 45);
+            lblLoginTitle.TabIndex = 3;
+            lblLoginTitle.Text = "Giriş";
             // 
             // btnIptal
             // 
-            this.btnIptal.BackColor = System.Drawing.Color.Gray;
-            this.btnIptal.FlatAppearance.BorderSize = 0;
-            this.btnIptal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIptal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnIptal.ForeColor = System.Drawing.Color.White;
-            this.btnIptal.Location = new System.Drawing.Point(127, 457);
-            this.btnIptal.Margin = new System.Windows.Forms.Padding(4);
-            this.btnIptal.Name = "btnIptal";
-            this.btnIptal.Size = new System.Drawing.Size(95, 30);
-            this.btnIptal.TabIndex = 3;
-            this.btnIptal.Text = "İptal";
-            this.btnIptal.UseVisualStyleBackColor = false;
-            this.btnIptal.Visible = false;
-            this.btnIptal.Click += new System.EventHandler(this.btnIptal_Click);
+            btnIptal.BackColor = Color.Gray;
+            btnIptal.FlatAppearance.BorderSize = 0;
+            btnIptal.FlatStyle = FlatStyle.Flat;
+            btnIptal.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnIptal.ForeColor = Color.White;
+            btnIptal.Location = new Point(148, 527);
+            btnIptal.Margin = new Padding(5, 5, 5, 5);
+            btnIptal.Name = "btnIptal";
+            btnIptal.Size = new Size(111, 35);
+            btnIptal.TabIndex = 3;
+            btnIptal.Text = "İptal";
+            btnIptal.UseVisualStyleBackColor = false;
+            btnIptal.Visible = false;
+            btnIptal.Click += btnIptal_Click;
             // 
             // LoginForm
             // 
-            this.AcceptButton = this.btnGirisYap;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 500);
-            this.Controls.Add(this.panelRight);
-            this.Controls.Add(this.panelLeft);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.Name = "LoginForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "UDO - Uludağ Deniz Otobüsleri";
-            this.Load += new System.EventHandler(this.LoginForm_Load);
-            this.panelLeft.ResumeLayout(false);
-            this.panelLeft.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
-            this.panelRight.ResumeLayout(false);
-            this.panelRight.PerformLayout();
-            this.ResumeLayout(false);
+            AcceptButton = btnGirisYap;
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(817, 577);
+            Controls.Add(panelRight);
+            Controls.Add(panelLeft);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(4, 3, 4, 3);
+            MaximizeBox = false;
+            Name = "LoginForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "UDO - Uludağ Deniz Otobüsleri";
+            Load += LoginForm_Load;
+            panelLeft.ResumeLayout(false);
+            panelLeft.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();
+            panelRight.ResumeLayout(false);
+            panelRight.PerformLayout();
+            ResumeLayout(false);
 
         }
 

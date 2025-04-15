@@ -94,7 +94,7 @@ namespace UDO.Forms
             lblTitle.Text = childForm.Text;
         }
 
-        // Dashboard/Ana sayfa
+        // Dashboard/Ana sayfaefefsef
         private void LoadDashboard()
         {
             // Gelecekte bu kısım veritabanından güncel verileri çekecek
