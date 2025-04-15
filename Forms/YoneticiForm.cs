@@ -104,11 +104,33 @@ namespace UDO.Forms
         // Dashboard/Ana sayfa
         private void LoadDashboard()
         {
-            // Ana sayfa içeriğini göster
-            lblTitle.Text = "ANA SAYFA";
+            // Ana sayfa içeriklerini oluştur
+            Panel pnlGunlukSeferler = new Panel();
+            pnlGunlukSeferler.Size = new Size(300, 150);
+            pnlGunlukSeferler.Location = new Point(20, 20);
+            pnlGunlukSeferler.BackColor = Color.FromArgb(230, 242, 247);
+            pnlGunlukSeferler.BorderStyle = BorderStyle.FixedSingle;
 
-            // Burada ana sayfa içeriği yüklenecek
-            // Örneğin günlük sefer sayısı, yolcu sayısı, aktif deniz otobüsü sayısı gibi metrikler
+            Label lblBaslik = new Label();
+            lblBaslik.Text = "Günlük Seferler";
+            lblBaslik.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            lblBaslik.Location = new Point(10, 10);
+            lblBaslik.AutoSize = true;
+            pnlGunlukSeferler.Controls.Add(lblBaslik);
+
+            Label lblSayi = new Label();
+            lblSayi.Text = "24";
+            lblSayi.Font = new Font("Segoe UI", 36, FontStyle.Bold);
+            lblSayi.ForeColor = Color.FromArgb(0, 127, 180);
+            lblSayi.Location = new Point(120, 50);
+            lblSayi.AutoSize = true;
+            pnlGunlukSeferler.Controls.Add(lblSayi);
+
+            // Panel'i ana sayfa içerik paneline ekle
+            this.panelDesktopPane.Controls.Add(pnlGunlukSeferler);
+
+            // İsterseniz daha fazla panel ekleyebilirsiniz
+            // ...
 
             toolStripStatusLabel.Text = "Durum: Ana Sayfa yüklendi. Tarih: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
         }
