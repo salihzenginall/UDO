@@ -1,5 +1,4 @@
 using System;
-using System.Drawing;
 using System.Windows.Forms;
 using UDO.Managers;
 using UDO.Models;
@@ -8,112 +7,164 @@ namespace UDO.Forms
 {
     public partial class LoginForm : Form
     {
-        private readonly UserManager userManager;
-
         public LoginForm()
         {
             InitializeComponent();
-            userManager = new UserManager();
         }
 
-        private void LoginForm_Load(object sender, EventArgs e)
+        private void GirisForm_Yukleme(object sender, EventArgs e)
         {
-            // Form yüklendiðinde yapýlacak iþlemler
-            this.AcceptButton = btnGirisYap; // Enter tuþu ile giriþ yapýlabilmesi için
-
-            // TextBox placeholder efekti
-            txtKullaniciAdi.GotFocus += RemoveText;
-            txtKullaniciAdi.LostFocus += AddText;
-            txtSifre.GotFocus += RemoveTextPassword;
-            txtSifre.LostFocus += AddTextPassword;
-        }
-
-        // Placeholder efektleri için yardýmcý metotlar
-        private void RemoveText(object sender, EventArgs e)
-        {
-            if (txtKullaniciAdi.Text == "Kullanýcý adýnýzý giriniz")
+            // Logo ve görsel ayarlar
+            try
             {
-                txtKullaniciAdi.Text = "";
+                // Logo resmini proje kaynaklarýndan yükle
+                // resimKutusuLogo.Image = Properties.Resources.udoLogo;
+
+                // Þifre alanýný gizle
+                txtSifre.PasswordChar = '*';
+
+                // Form kontrollerini ilk durumuna getir
+                txtKullaniciAdi.Text = string.Empty;
+                txtSifre.Text = string.Empty;
+                txtKullaniciAdi.Focus();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Form yüklenirken bir hata oluþtu: " + ex.Message);
             }
         }
 
-        private void AddText(object sender, EventArgs e)
+        private void btnGirisYap_Tiklama(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtKullaniciAdi.Text))
+            // Kullanýcý giriþ bilgilerini kontrol et
+            if (string.IsNullOrEmpty(txtKullaniciAdi.Text))
             {
-                txtKullaniciAdi.Text = "Kullanýcý adýnýzý giriniz";
-            }
-        }
-
-        private void RemoveTextPassword(object sender, EventArgs e)
-        {
-            txtSifre.PasswordChar = '•';
-            if (txtSifre.Text == "Þifrenizi giriniz")
-            {
-                txtSifre.Text = "";
-            }
-        }
-
-        private void AddTextPassword(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtSifre.Text))
-            {
-                txtSifre.PasswordChar = '\0';
-                txtSifre.Text = "Þifrenizi giriniz";
-            }
-        }
-
-        private void btnGirisYap_Click(object sender, EventArgs e)
-        {
-            string kullaniciAdi = txtKullaniciAdi.Text.Trim();
-            string sifre = txtSifre.Text;
-
-            // Placeholder deðerleriyse iþlem yapma
-            if (kullaniciAdi == "Kullanýcý adýnýzý giriniz" || sifre == "Þifrenizi giriniz")
-            {
-                MessageBox.Show("Lütfen kullanýcý adý ve þifre giriniz!", "Uyarý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Kullanýcý adý boþ býrakýlamaz!", "Uyarý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtKullaniciAdi.Focus();
                 return;
             }
 
-            if (string.IsNullOrEmpty(kullaniciAdi) || string.IsNullOrEmpty(sifre))
+            if (string.IsNullOrEmpty(txtSifre.Text))
             {
-                MessageBox.Show("Kullanýcý adý ve þifre boþ býrakýlamaz!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Þifre boþ býrakýlamaz!", "Uyarý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtSifre.Focus();
                 return;
             }
 
             try
             {
-                User user = userManager.Login(kullaniciAdi, sifre);
+                // Kullanýcý bilgilerini veritabanýnda kontrol et
+                UserManager kullaniciYoneticisi = new UserManager();
+                User kullanici = kullaniciYoneticisi.Login(txtKullaniciAdi.Text, txtSifre.Text);
 
-                if (user != null)
+                if (kullanici != null)
                 {
-                    // Kullanýcý tipine bakýlmaksýzýn yönetici formunu aç
-                    YoneticiForm yoneticiForm = new YoneticiForm(user);
-                    this.Hide();
-                    yoneticiForm.FormClosed += (s, args) => this.Close();
-                    yoneticiForm.Show();
+                    // Baþarýlý giriþ
+                    MessageBox.Show("Giriþ baþarýlý! Hoþ geldiniz, " + kullanici.TamAd(), "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Kullanýcý tipine göre uygun formu aç
+                    if (kullanici.IsYonetici())
+                    {
+                        // Yönetici formunu aç
+                        YoneticiForm yoneticiForm = new YoneticiForm(kullanici);
+                        this.Hide();
+                        yoneticiForm.ShowDialog();
+                        this.Close();
+                    }
+                    else if (kullanici.IsPersonel())
+                    {
+                        // Personel formunu aç (henüz uygulanmadý)
+                        MessageBox.Show("Personel paneli yakýnda eklenecek.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        // PersonelForm personelForm = new PersonelForm(kullanici);
+                        // this.Hide();
+                        // personelForm.ShowDialog();
+                        // this.Close();
+                    }
+                    else if (kullanici.IsMusteri())
+                    {
+                        // Müþteri formunu aç (henüz uygulanmadý)
+                        MessageBox.Show("Müþteri paneli yakýnda eklenecek.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        // MusteriForm musteriForm = new MusteriForm(kullanici);
+                        // this.Hide();
+                        // musteriForm.ShowDialog();
+                        // this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Kullanýcý rolü tanýmlý deðil!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    // Kullanýcý bulunamadý veya bilgiler yanlýþ
-                    MessageBox.Show("Kullanýcý adý veya þifre hatalý!", "Giriþ Hatasý", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // Baþarýsýz giriþ
+                    MessageBox.Show("Kullanýcý adý veya þifre hatalý!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtSifre.Clear();
+                    txtSifre.Focus();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Giriþ sýrasýnda bir hata oluþtu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Giriþ yapýlýrken bir hata oluþtu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void btnIptal_Click(object sender, EventArgs e)
+        private void btnIptal_Tiklama(object sender, EventArgs e)
         {
-            // Uygulamayý kapat
-            Application.Exit();
+            // Formu kapat
+            DialogResult result = MessageBox.Show("Uygulamadan çýkmak istediðinize emin misiniz?", "Çýkýþ",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
 
-        private void lblSignUp_Click(object sender, EventArgs e)
+        private void lblKayitOl_Tiklama(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MessageBox.Show("Kayýt olma özelliði henüz uygulanmadý.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // Kayýt formunu aç (henüz uygulanmadý)
+            MessageBox.Show("Kayýt formu yakýnda eklenecek.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // KayitForm kayitForm = new KayitForm();
+            // kayitForm.ShowDialog();
+        }
+
+        // TextBox'lardaki ipucu metinlerini yönetmek için yardýmcý metotlar
+        private void TextBox_GotFocus(object sender, EventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (textBox != null)
+            {
+                if (textBox == txtKullaniciAdi && textBox.Text == "Kullanýcý adýnýzý giriniz")
+                {
+                    textBox.Text = string.Empty;
+                    textBox.ForeColor = System.Drawing.Color.Black;
+                }
+                else if (textBox == txtSifre && textBox.Text == "Þifrenizi giriniz")
+                {
+                    textBox.Text = string.Empty;
+                    textBox.PasswordChar = '*';
+                    textBox.ForeColor = System.Drawing.Color.Black;
+                }
+            }
+        }
+
+        private void TextBox_LostFocus(object sender, EventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (textBox != null)
+            {
+                if (textBox == txtKullaniciAdi && string.IsNullOrWhiteSpace(textBox.Text))
+                {
+                    textBox.Text = "Kullanýcý adýnýzý giriniz";
+                    textBox.ForeColor = System.Drawing.Color.DimGray;
+                }
+                else if (textBox == txtSifre && string.IsNullOrWhiteSpace(textBox.Text))
+                {
+                    textBox.PasswordChar = '\0';
+                    textBox.Text = "Þifrenizi giriniz";
+                    textBox.ForeColor = System.Drawing.Color.DimGray;
+                }
+            }
         }
     }
 }

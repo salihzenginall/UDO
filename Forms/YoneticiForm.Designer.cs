@@ -22,6 +22,7 @@
         // içeriğini kod düzenleyici ile değiştirmeyin
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(YoneticiForm));
             this.panelMenu = new System.Windows.Forms.Panel();
             this.btnCikis = new System.Windows.Forms.Button();
@@ -33,24 +34,24 @@
             this.btnPersonelYonetimi = new System.Windows.Forms.Button();
             this.btnAnasayfa = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
-            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
+            this.resimKutusuLogo = new System.Windows.Forms.PictureBox();
             this.lblLogo = new System.Windows.Forms.Label();
-            this.panelTitleBar = new System.Windows.Forms.Panel();
-            this.lblDateTime = new System.Windows.Forms.Label();
-            this.lblUserInfo = new System.Windows.Forms.Label();
-            this.btnMinimize = new System.Windows.Forms.Button();
-            this.btnMaximize = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.panelDesktopPane = new System.Windows.Forms.Panel();
-            this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.timer1 = new System.Windows.Forms.Timer();
+            this.panelBaslikCubugu = new System.Windows.Forms.Panel();
+            this.lblTarihSaat = new System.Windows.Forms.Label();
+            this.lblKullaniciBilgisi = new System.Windows.Forms.Label();
+            this.btnSimgeDurumu = new System.Windows.Forms.Button();
+            this.btnEkraniKapla = new System.Windows.Forms.Button();
+            this.btnKapat = new System.Windows.Forms.Button();
+            this.lblBaslik = new System.Windows.Forms.Label();
+            this.panelMasaustuAlani = new System.Windows.Forms.Panel();
+            this.durumCubugu = new System.Windows.Forms.StatusStrip();
+            this.aracCubuguDurumEtiketi = new System.Windows.Forms.ToolStripStatusLabel();
+            this.zamanlayici1 = new System.Windows.Forms.Timer(this.components);
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
-            this.panelTitleBar.SuspendLayout();
-            this.statusStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.resimKutusuLogo)).BeginInit();
+            this.panelBaslikCubugu.SuspendLayout();
+            this.durumCubugu.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -89,7 +90,7 @@
             this.btnCikis.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCikis.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCikis.UseVisualStyleBackColor = true;
-            this.btnCikis.Click += new System.EventHandler(this.btnCikis_Click);
+            this.btnCikis.Click += new System.EventHandler(this.btnCikis_Tiklama);
             // 
             // btnAyarlar
             // 
@@ -109,7 +110,7 @@
             this.btnAyarlar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAyarlar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAyarlar.UseVisualStyleBackColor = true;
-            this.btnAyarlar.Click += new System.EventHandler(this.btnAyarlar_Click);
+            this.btnAyarlar.Click += new System.EventHandler(this.btnAyarlar_Tiklama);
             // 
             // btnRaporlar
             // 
@@ -129,7 +130,7 @@
             this.btnRaporlar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRaporlar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRaporlar.UseVisualStyleBackColor = true;
-            this.btnRaporlar.Click += new System.EventHandler(this.btnRaporlar_Click);
+            this.btnRaporlar.Click += new System.EventHandler(this.btnRaporlar_Tiklama);
             // 
             // btnMusteriYonetimi
             // 
@@ -149,7 +150,7 @@
             this.btnMusteriYonetimi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMusteriYonetimi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnMusteriYonetimi.UseVisualStyleBackColor = true;
-            this.btnMusteriYonetimi.Click += new System.EventHandler(this.btnMusteriYonetimi_Click);
+            this.btnMusteriYonetimi.Click += new System.EventHandler(this.btnMusteriYonetimi_Tiklama);
             // 
             // btnAracYonetimi
             // 
@@ -169,7 +170,7 @@
             this.btnAracYonetimi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAracYonetimi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAracYonetimi.UseVisualStyleBackColor = true;
-            this.btnAracYonetimi.Click += new System.EventHandler(this.btnAracYonetimi_Click);
+            this.btnAracYonetimi.Click += new System.EventHandler(this.btnAracYonetimi_Tiklama);
             // 
             // btnSeferYonetimi
             // 
@@ -189,7 +190,7 @@
             this.btnSeferYonetimi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSeferYonetimi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSeferYonetimi.UseVisualStyleBackColor = true;
-            this.btnSeferYonetimi.Click += new System.EventHandler(this.btnSeferYonetimi_Click);
+            this.btnSeferYonetimi.Click += new System.EventHandler(this.btnSeferYonetimi_Tiklama);
             // 
             // btnPersonelYonetimi
             // 
@@ -209,7 +210,7 @@
             this.btnPersonelYonetimi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPersonelYonetimi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPersonelYonetimi.UseVisualStyleBackColor = true;
-            this.btnPersonelYonetimi.Click += new System.EventHandler(this.btnPersonelYonetimi_Click);
+            this.btnPersonelYonetimi.Click += new System.EventHandler(this.btnPersonelYonetimi_Tiklama);
             // 
             // btnAnasayfa
             // 
@@ -229,12 +230,12 @@
             this.btnAnasayfa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAnasayfa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAnasayfa.UseVisualStyleBackColor = true;
-            this.btnAnasayfa.Click += new System.EventHandler(this.btnAnasayfa_Click);
+            this.btnAnasayfa.Click += new System.EventHandler(this.btnAnasayfa_Tiklama);
             // 
             // panelLogo
             // 
             this.panelLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(105)))));
-            this.panelLogo.Controls.Add(this.pictureBoxLogo);
+            this.panelLogo.Controls.Add(this.resimKutusuLogo);
             this.panelLogo.Controls.Add(this.lblLogo);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
@@ -242,15 +243,15 @@
             this.panelLogo.Size = new System.Drawing.Size(250, 75);
             this.panelLogo.TabIndex = 0;
             // 
-            // pictureBoxLogo
+            // resimKutusuLogo
             // 
-            this.pictureBoxLogo.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxLogo.Image")));
-            this.pictureBoxLogo.Location = new System.Drawing.Point(12, 12);
-            this.pictureBoxLogo.Name = "pictureBoxLogo";
-            this.pictureBoxLogo.Size = new System.Drawing.Size(50, 50);
-            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxLogo.TabIndex = 1;
-            this.pictureBoxLogo.TabStop = false;
+            this.resimKutusuLogo.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxLogo.Image")));
+            this.resimKutusuLogo.Location = new System.Drawing.Point(12, 12);
+            this.resimKutusuLogo.Name = "resimKutusuLogo";
+            this.resimKutusuLogo.Size = new System.Drawing.Size(50, 50);
+            this.resimKutusuLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.resimKutusuLogo.TabIndex = 1;
+            this.resimKutusuLogo.TabStop = false;
             // 
             // lblLogo
             // 
@@ -263,156 +264,156 @@
             this.lblLogo.TabIndex = 0;
             this.lblLogo.Text = "UDO";
             // 
-            // panelTitleBar
+            // panelBaslikCubugu
             // 
-            this.panelTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(180)))));
-            this.panelTitleBar.Controls.Add(this.lblDateTime);
-            this.panelTitleBar.Controls.Add(this.lblUserInfo);
-            this.panelTitleBar.Controls.Add(this.btnMinimize);
-            this.panelTitleBar.Controls.Add(this.btnMaximize);
-            this.panelTitleBar.Controls.Add(this.btnClose);
-            this.panelTitleBar.Controls.Add(this.lblTitle);
-            this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTitleBar.Location = new System.Drawing.Point(250, 0);
-            this.panelTitleBar.Name = "panelTitleBar";
-            this.panelTitleBar.Size = new System.Drawing.Size(950, 75);
-            this.panelTitleBar.TabIndex = 1;
-            this.panelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
+            this.panelBaslikCubugu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(180)))));
+            this.panelBaslikCubugu.Controls.Add(this.lblTarihSaat);
+            this.panelBaslikCubugu.Controls.Add(this.lblKullaniciBilgisi);
+            this.panelBaslikCubugu.Controls.Add(this.btnSimgeDurumu);
+            this.panelBaslikCubugu.Controls.Add(this.btnEkraniKapla);
+            this.panelBaslikCubugu.Controls.Add(this.btnKapat);
+            this.panelBaslikCubugu.Controls.Add(this.lblBaslik);
+            this.panelBaslikCubugu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelBaslikCubugu.Location = new System.Drawing.Point(250, 0);
+            this.panelBaslikCubugu.Name = "panelBaslikCubugu";
+            this.panelBaslikCubugu.Size = new System.Drawing.Size(950, 75);
+            this.panelBaslikCubugu.TabIndex = 1;
+            this.panelBaslikCubugu.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelBaslikCubugu_FareBasildi);
             // 
-            // lblDateTime
+            // lblTarihSaat
             // 
-            this.lblDateTime.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblDateTime.ForeColor = System.Drawing.Color.White;
-            this.lblDateTime.Location = new System.Drawing.Point(700, 40);
-            this.lblDateTime.Name = "lblDateTime";
-            this.lblDateTime.Size = new System.Drawing.Size(200, 17);
-            this.lblDateTime.TabIndex = 5;
-            this.lblDateTime.Text = "15.04.2025 14:30";
-            this.lblDateTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblTarihSaat.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblTarihSaat.ForeColor = System.Drawing.Color.White;
+            this.lblTarihSaat.Location = new System.Drawing.Point(700, 40);
+            this.lblTarihSaat.Name = "lblTarihSaat";
+            this.lblTarihSaat.Size = new System.Drawing.Size(200, 17);
+            this.lblTarihSaat.TabIndex = 5;
+            this.lblTarihSaat.Text = "15.04.2025 14:30";
+            this.lblTarihSaat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // lblUserInfo
+            // lblKullaniciBilgisi
             // 
-            this.lblUserInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblUserInfo.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblUserInfo.ForeColor = System.Drawing.Color.White;
-            this.lblUserInfo.Location = new System.Drawing.Point(700, 15);
-            this.lblUserInfo.Name = "lblUserInfo";
-            this.lblUserInfo.Size = new System.Drawing.Size(200, 25);
-            this.lblUserInfo.TabIndex = 4;
-            this.lblUserInfo.Text = "Kullanıcı: Admin";
-            this.lblUserInfo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblKullaniciBilgisi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblKullaniciBilgisi.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblKullaniciBilgisi.ForeColor = System.Drawing.Color.White;
+            this.lblKullaniciBilgisi.Location = new System.Drawing.Point(700, 15);
+            this.lblKullaniciBilgisi.Name = "lblKullaniciBilgisi";
+            this.lblKullaniciBilgisi.Size = new System.Drawing.Size(200, 25);
+            this.lblKullaniciBilgisi.TabIndex = 4;
+            this.lblKullaniciBilgisi.Text = "Kullanıcı: Admin";
+            this.lblKullaniciBilgisi.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // btnMinimize
+            // btnSimgeDurumu
             // 
-            this.btnMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMinimize.FlatAppearance.BorderSize = 0;
-            this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMinimize.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnMinimize.ForeColor = System.Drawing.Color.White;
-            this.btnMinimize.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimize.Image")));
-            this.btnMinimize.Location = new System.Drawing.Point(865, 3);
-            this.btnMinimize.Name = "btnMinimize";
-            this.btnMinimize.Size = new System.Drawing.Size(25, 25);
-            this.btnMinimize.TabIndex = 3;
-            this.btnMinimize.UseVisualStyleBackColor = true;
-            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
+            this.btnSimgeDurumu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSimgeDurumu.FlatAppearance.BorderSize = 0;
+            this.btnSimgeDurumu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSimgeDurumu.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnSimgeDurumu.ForeColor = System.Drawing.Color.White;
+            this.btnSimgeDurumu.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimize.Image")));
+            this.btnSimgeDurumu.Location = new System.Drawing.Point(865, 3);
+            this.btnSimgeDurumu.Name = "btnSimgeDurumu";
+            this.btnSimgeDurumu.Size = new System.Drawing.Size(25, 25);
+            this.btnSimgeDurumu.TabIndex = 3;
+            this.btnSimgeDurumu.UseVisualStyleBackColor = true;
+            this.btnSimgeDurumu.Click += new System.EventHandler(this.btnSimgeDurumu_Tiklama);
             // 
-            // btnMaximize
+            // btnEkraniKapla
             // 
-            this.btnMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMaximize.FlatAppearance.BorderSize = 0;
-            this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMaximize.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnMaximize.ForeColor = System.Drawing.Color.White;
-            this.btnMaximize.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximize.Image")));
-            this.btnMaximize.Location = new System.Drawing.Point(895, 3);
-            this.btnMaximize.Name = "btnMaximize";
-            this.btnMaximize.Size = new System.Drawing.Size(25, 25);
-            this.btnMaximize.TabIndex = 2;
-            this.btnMaximize.UseVisualStyleBackColor = true;
-            this.btnMaximize.Click += new System.EventHandler(this.btnMaximize_Click);
+            this.btnEkraniKapla.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEkraniKapla.FlatAppearance.BorderSize = 0;
+            this.btnEkraniKapla.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEkraniKapla.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnEkraniKapla.ForeColor = System.Drawing.Color.White;
+            this.btnEkraniKapla.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximize.Image")));
+            this.btnEkraniKapla.Location = new System.Drawing.Point(895, 3);
+            this.btnEkraniKapla.Name = "btnEkraniKapla";
+            this.btnEkraniKapla.Size = new System.Drawing.Size(25, 25);
+            this.btnEkraniKapla.TabIndex = 2;
+            this.btnEkraniKapla.UseVisualStyleBackColor = true;
+            this.btnEkraniKapla.Click += new System.EventHandler(this.btnEkraniKapla_Tiklama);
             // 
-            // btnClose
+            // btnKapat
             // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(925, 3);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(25, 25);
-            this.btnClose.TabIndex = 1;
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnKapat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnKapat.FlatAppearance.BorderSize = 0;
+            this.btnKapat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnKapat.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnKapat.ForeColor = System.Drawing.Color.White;
+            this.btnKapat.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
+            this.btnKapat.Location = new System.Drawing.Point(925, 3);
+            this.btnKapat.Name = "btnKapat";
+            this.btnKapat.Size = new System.Drawing.Size(25, 25);
+            this.btnKapat.TabIndex = 1;
+            this.btnKapat.UseVisualStyleBackColor = true;
+            this.btnKapat.Click += new System.EventHandler(this.btnKapat_Tiklama);
             // 
-            // lblTitle
+            // lblBaslik
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(20, 22);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(133, 32);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "ANA SAYFA";
+            this.lblBaslik.AutoSize = true;
+            this.lblBaslik.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblBaslik.ForeColor = System.Drawing.Color.White;
+            this.lblBaslik.Location = new System.Drawing.Point(20, 22);
+            this.lblBaslik.Name = "lblBaslik";
+            this.lblBaslik.Size = new System.Drawing.Size(133, 32);
+            this.lblBaslik.TabIndex = 0;
+            this.lblBaslik.Text = "ANA SAYFA";
             // 
-            // panelDesktopPane
+            // panelMasaustuAlani
             // 
-            this.panelDesktopPane.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panelDesktopPane.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDesktopPane.Location = new System.Drawing.Point(250, 75);
-            this.panelDesktopPane.Name = "panelDesktopPane";
-            this.panelDesktopPane.Size = new System.Drawing.Size(950, 603);
-            this.panelDesktopPane.TabIndex = 2;
+            this.panelMasaustuAlani.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelMasaustuAlani.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelMasaustuAlani.Location = new System.Drawing.Point(250, 75);
+            this.panelMasaustuAlani.Name = "panelMasaustuAlani";
+            this.panelMasaustuAlani.Size = new System.Drawing.Size(950, 603);
+            this.panelMasaustuAlani.TabIndex = 2;
             // 
-            // statusStrip
+            // durumCubugu
             // 
-            this.statusStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
-            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(250, 678);
-            this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(950, 22);
-            this.statusStrip.TabIndex = 3;
-            this.statusStrip.Text = "statusStrip1";
+            this.durumCubugu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(240)))), ((int)(((byte)(250)))));
+            this.durumCubugu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aracCubuguDurumEtiketi});
+            this.durumCubugu.Location = new System.Drawing.Point(250, 678);
+            this.durumCubugu.Name = "durumCubugu";
+            this.durumCubugu.Size = new System.Drawing.Size(950, 22);
+            this.durumCubugu.TabIndex = 3;
+            this.durumCubugu.Text = "statusStrip1";
             // 
-            // toolStripStatusLabel
+            // aracCubuguDurumEtiketi
             // 
-            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(50, 17);
-            this.toolStripStatusLabel.Text = "Durum: ";
+            this.aracCubuguDurumEtiketi.Name = "aracCubuguDurumEtiketi";
+            this.aracCubuguDurumEtiketi.Size = new System.Drawing.Size(50, 17);
+            this.aracCubuguDurumEtiketi.Text = "Durum: ";
             // 
-            // timer1
+            // zamanlayici1
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.zamanlayici1.Enabled = true;
+            this.zamanlayici1.Interval = 1000;
+            this.zamanlayici1.Tick += new System.EventHandler(this.zamanlayici1_Tik);
             // 
             // YoneticiForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 700);
-            this.Controls.Add(this.statusStrip);
-            this.Controls.Add(this.panelDesktopPane);
-            this.Controls.Add(this.panelTitleBar);
+            this.Controls.Add(this.durumCubugu);
+            this.Controls.Add(this.panelMasaustuAlani);
+            this.Controls.Add(this.panelBaslikCubugu);
             this.Controls.Add(this.panelMenu);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "YoneticiForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UDO - Yönetici Paneli";
-            this.Load += new System.EventHandler(this.YoneticiForm_Load);
+            this.Load += new System.EventHandler(this.YoneticiForm_Yukleme);
             this.panelMenu.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
             this.panelLogo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
-            this.panelTitleBar.ResumeLayout(false);
-            this.panelTitleBar.PerformLayout();
-            this.statusStrip.ResumeLayout(false);
-            this.statusStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.resimKutusuLogo)).EndInit();
+            this.panelBaslikCubugu.ResumeLayout(false);
+            this.panelBaslikCubugu.PerformLayout();
+            this.durumCubugu.ResumeLayout(false);
+            this.durumCubugu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -431,17 +432,17 @@
         private System.Windows.Forms.Button btnSeferYonetimi;
         private System.Windows.Forms.Button btnPersonelYonetimi;
         private System.Windows.Forms.Label lblLogo;
-        private System.Windows.Forms.Panel panelTitleBar;
-        private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button btnMinimize;
-        private System.Windows.Forms.Button btnMaximize;
-        private System.Windows.Forms.Panel panelDesktopPane;
-        private System.Windows.Forms.StatusStrip statusStrip;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
-        private System.Windows.Forms.Label lblUserInfo;
-        private System.Windows.Forms.PictureBox pictureBoxLogo;
-        private System.Windows.Forms.Label lblDateTime;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Panel panelBaslikCubugu;
+        private System.Windows.Forms.Label lblBaslik;
+        private System.Windows.Forms.Button btnKapat;
+        private System.Windows.Forms.Button btnSimgeDurumu;
+        private System.Windows.Forms.Button btnEkraniKapla;
+        private System.Windows.Forms.Panel panelMasaustuAlani;
+        private System.Windows.Forms.StatusStrip durumCubugu;
+        private System.Windows.Forms.ToolStripStatusLabel aracCubuguDurumEtiketi;
+        private System.Windows.Forms.Label lblKullaniciBilgisi;
+        private System.Windows.Forms.PictureBox resimKutusuLogo;
+        private System.Windows.Forms.Label lblTarihSaat;
+        private System.Windows.Forms.Timer zamanlayici1;
     }
 }

@@ -10,15 +10,15 @@ namespace UDO.Forms
     public partial class YoneticiForm : Form
     {
         // Alanlar
-        private Button currentButton;
-        private Form activeForm;
-        private readonly User currentUser;
+        private Button mevcutButon;
+        private Form aktifForm;
+        private readonly User mevcutKullanici;
 
         // Yapıcı metot
         public YoneticiForm(User user)
         {
             InitializeComponent();
-            currentUser = user;
+            mevcutKullanici = user;
 
             // Form border olmadığı için custom control sağlamak için gerekli ayarlar
             this.Text = string.Empty;
@@ -26,31 +26,31 @@ namespace UDO.Forms
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
 
             // Varsayılan aktif buton olarak ana sayfa butonunu işaretle
-            ActivateButton(btnAnasayfa);
+            ButonuAktifEt(btnAnasayfa);
 
             // Butonların simgelerini ayarlama
-            SetButtonIcons();
+            ButonSimgeleriniAyarla();
         }
 
-        // Butonların simgelerini ve konumlarını ayarlayan metod
-        private void SetButtonIcons()
+        // Butonların simgelerini ve konumlarını ayarlayan metot
+        private void ButonSimgeleriniAyarla()
         {
             // Windows Forms uygulamasında butonların simgelerini ayarla
             // Not: Gerçek uygulamada bu simgeler proje kaynaklarından yüklenir
             try
             {
                 // Minimize, Maximize ve Close butonları için simgeler
-                btnMinimize.Text = "−";
-                btnMinimize.Font = new Font("Arial", 12, FontStyle.Bold);
-                btnMinimize.ForeColor = Color.White;
+                btnSimgeDurumu.Text = "−";
+                btnSimgeDurumu.Font = new Font("Arial", 12, FontStyle.Bold);
+                btnSimgeDurumu.ForeColor = Color.White;
 
-                btnMaximize.Text = "□";
-                btnMaximize.Font = new Font("Arial", 12, FontStyle.Bold);
-                btnMaximize.ForeColor = Color.White;
+                btnEkraniKapla.Text = "□";
+                btnEkraniKapla.Font = new Font("Arial", 12, FontStyle.Bold);
+                btnEkraniKapla.ForeColor = Color.White;
 
-                btnClose.Text = "×";
-                btnClose.Font = new Font("Arial", 12, FontStyle.Bold);
-                btnClose.ForeColor = Color.White;
+                btnKapat.Text = "×";
+                btnKapat.Font = new Font("Arial", 12, FontStyle.Bold);
+                btnKapat.ForeColor = Color.White;
             }
             catch (Exception ex)
             {
@@ -58,337 +58,337 @@ namespace UDO.Forms
             }
         }
 
-        // Kontrollerin konumlarını ayarlayan metod
-        private void AdjustControlPositions()
+        // Kontrollerin konumlarını ayarlayan metot
+        private void KontrolPozisyonlariniAyarla()
         {
             // Butonların konumlarını panelin en sağına ayarla
-            int panelWidth = panelTitleBar.Width;
+            int panelGenislik = panelBaslikCubugu.Width;
 
             // Butonlar için daha solda yer ayarla (Kullanıcı bilgisinin solunda)
-            btnClose.Location = new Point(panelWidth - 30, 3);
-            btnMaximize.Location = new Point(panelWidth - 60, 3);
-            btnMinimize.Location = new Point(panelWidth - 90, 3);
+            btnKapat.Location = new Point(panelGenislik - 30, 3);
+            btnEkraniKapla.Location = new Point(panelGenislik - 60, 3);
+            btnSimgeDurumu.Location = new Point(panelGenislik - 90, 3);
 
             // Kullanıcı bilgisini daha kısa tut ve konumunu ayarla
-            lblUserInfo.MaximumSize = new Size(300, 25);
-            lblUserInfo.Location = new Point(panelWidth - 400, 15);
-            lblUserInfo.TextAlign = ContentAlignment.MiddleRight;
+            lblKullaniciBilgisi.MaximumSize = new Size(300, 25);
+            lblKullaniciBilgisi.Location = new Point(panelGenislik - 400, 15);
+            lblKullaniciBilgisi.TextAlign = ContentAlignment.MiddleRight;
 
             // Tarih saat bilgisinin konumunu ayarla
-            lblDateTime.Location = new Point(panelWidth - 400, 40);
-            lblDateTime.TextAlign = ContentAlignment.MiddleRight;
+            lblTarihSaat.Location = new Point(panelGenislik - 400, 40);
+            lblTarihSaat.TextAlign = ContentAlignment.MiddleRight;
         }
 
         // DLL Import, formu taşımak için gerekli
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
+        private extern static void FareKaptureSerbestBirak();
 
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+        private extern static void MesajGonder(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
         // Tema rengini seçen metot
-        private Color SelectThemeColor()
+        private Color TemaRenginiSec()
         {
             // UDO deniz teması için sabit bir renk
             return Color.FromArgb(0, 127, 180);
         }
 
         // Butonları aktifleştiren metot
-        private void ActivateButton(object btnSender)
+        private void ButonuAktifEt(object btnGonderen)
         {
-            if (btnSender != null)
+            if (btnGonderen != null)
             {
-                if (currentButton != (Button)btnSender)
+                if (mevcutButon != (Button)btnGonderen)
                 {
-                    DisableButton();
-                    Color color = SelectThemeColor();
-                    currentButton = (Button)btnSender;
-                    currentButton.BackColor = Color.FromArgb(0, 60, 105);
-                    currentButton.ForeColor = Color.White;
-                    currentButton.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(162)));
-                    panelTitleBar.BackColor = color;
+                    ButonuPasifEt();
+                    Color renk = TemaRenginiSec();
+                    mevcutButon = (Button)btnGonderen;
+                    mevcutButon.BackColor = Color.FromArgb(0, 60, 105);
+                    mevcutButon.ForeColor = Color.White;
+                    mevcutButon.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(162)));
+                    panelBaslikCubugu.BackColor = renk;
                     panelLogo.BackColor = Color.FromArgb(0, 60, 105);
                 }
             }
         }
 
         // Butonları pasifleştiren metot
-        private void DisableButton()
+        private void ButonuPasifEt()
         {
-            foreach (Control previousBtn in panelMenu.Controls)
+            foreach (Control oncekiBtn in panelMenu.Controls)
             {
-                if (previousBtn.GetType() == typeof(Button))
+                if (oncekiBtn.GetType() == typeof(Button))
                 {
-                    previousBtn.BackColor = Color.FromArgb(0, 71, 118);
-                    previousBtn.ForeColor = Color.White;
-                    previousBtn.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(162)));
+                    oncekiBtn.BackColor = Color.FromArgb(0, 71, 118);
+                    oncekiBtn.ForeColor = Color.White;
+                    oncekiBtn.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(162)));
                 }
             }
         }
 
         // Alt formları açan metot
-        private void OpenChildForm(Form childForm, object btnSender)
+        private void AltFormuAc(Form altForm, object btnGonderen)
         {
-            if (activeForm != null)
+            if (aktifForm != null)
             {
-                activeForm.Close();
+                aktifForm.Close();
             }
 
-            ActivateButton(btnSender);
+            ButonuAktifEt(btnGonderen);
 
-            activeForm = childForm;
-            childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill;
+            aktifForm = altForm;
+            altForm.TopLevel = false;
+            altForm.FormBorderStyle = FormBorderStyle.None;
+            altForm.Dock = DockStyle.Fill;
 
-            this.panelDesktopPane.Controls.Add(childForm);
-            this.panelDesktopPane.Tag = childForm;
+            this.panelMasaustuAlani.Controls.Add(altForm);
+            this.panelMasaustuAlani.Tag = altForm;
 
-            childForm.BringToFront();
-            childForm.Show();
+            altForm.BringToFront();
+            altForm.Show();
 
-            lblTitle.Text = childForm.Text.ToUpper();
+            lblBaslik.Text = altForm.Text.ToUpper();
         }
 
         // Dashboard/Ana sayfa
-        private void LoadDashboard()
+        private void PanoyuYukle()
         {
             // Önce tüm kontrolleri temizle
-            panelDesktopPane.Controls.Clear();
+            panelMasaustuAlani.Controls.Clear();
 
             // İstatistik kartlarını oluştur
-            CreateStatCards();
+            IstatistikKartlariniOlustur();
 
             // Haftalık yolcu istatistiklerini oluştur
-            CreateWeeklyStats();
+            HaftalikIstatistikleriOlustur();
 
             // Yaklaşan seferleri oluştur
-            CreateUpcomingTrips();
+            YaklasmaSeferleriOlustur();
 
-            toolStripStatusLabel.Text = "Durum: Hazır | Son giriş: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
+            aracCubuguDurumEtiketi.Text = "Durum: Hazır | Son giriş: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
         }
 
         // İstatistik kartlarını oluşturan metot
-        private void CreateStatCards()
+        private void IstatistikKartlariniOlustur()
         {
             // Günlük Seferler Kartı
-            Panel pnlDailyTrips = CreatePanel(20, 20, 300, 150, Color.FromArgb(230, 242, 247));
+            Panel pnlGunlukSeferler = PanelOlustur(20, 20, 300, 150, Color.FromArgb(230, 242, 247));
 
-            Label lblDailyTripsTitle = CreateLabel("Günlük Seferler", 10, 10, new Font("Segoe UI", 12, FontStyle.Bold), Color.FromArgb(0, 127, 180));
-            pnlDailyTrips.Controls.Add(lblDailyTripsTitle);
+            Label lblGunlukSeferlerBaslik = EtiketOlustur("Günlük Seferler", 10, 10, new Font("Segoe UI", 12, FontStyle.Bold), Color.FromArgb(0, 127, 180));
+            pnlGunlukSeferler.Controls.Add(lblGunlukSeferlerBaslik);
 
-            Label lblDailyTripsValue = CreateLabel("24", 125, 50, new Font("Segoe UI", 36, FontStyle.Bold), Color.FromArgb(0, 127, 180));
-            pnlDailyTrips.Controls.Add(lblDailyTripsValue);
+            Label lblGunlukSeferlerDeger = EtiketOlustur("24", 125, 50, new Font("Segoe UI", 36, FontStyle.Bold), Color.FromArgb(0, 127, 180));
+            pnlGunlukSeferler.Controls.Add(lblGunlukSeferlerDeger);
 
-            Label lblDailyTripsSubtitle = CreateLabel("Bugünkü Toplam Sefer", 75, 110, new Font("Segoe UI", 9, FontStyle.Regular), Color.DimGray);
-            pnlDailyTrips.Controls.Add(lblDailyTripsSubtitle);
+            Label lblGunlukSeferlerAltYazi = EtiketOlustur("Bugünkü Toplam Sefer", 75, 110, new Font("Segoe UI", 9, FontStyle.Regular), Color.DimGray);
+            pnlGunlukSeferler.Controls.Add(lblGunlukSeferlerAltYazi);
 
-            panelDesktopPane.Controls.Add(pnlDailyTrips);
+            panelMasaustuAlani.Controls.Add(pnlGunlukSeferler);
 
             // Bugünkü Yolcu Sayısı Kartı
-            Panel pnlDailyPassengers = CreatePanel(330, 20, 300, 150, Color.FromArgb(230, 242, 247));
+            Panel pnlGunlukYolcular = PanelOlustur(330, 20, 300, 150, Color.FromArgb(230, 242, 247));
 
-            Label lblDailyPassengersTitle = CreateLabel("Bugünkü Yolcu Sayısı", 10, 10, new Font("Segoe UI", 12, FontStyle.Bold), Color.FromArgb(0, 127, 180));
-            pnlDailyPassengers.Controls.Add(lblDailyPassengersTitle);
+            Label lblGunlukYolcularBaslik = EtiketOlustur("Bugünkü Yolcu Sayısı", 10, 10, new Font("Segoe UI", 12, FontStyle.Bold), Color.FromArgb(0, 127, 180));
+            pnlGunlukYolcular.Controls.Add(lblGunlukYolcularBaslik);
 
-            Label lblDailyPassengersValue = CreateLabel("867", 110, 50, new Font("Segoe UI", 36, FontStyle.Bold), Color.FromArgb(0, 127, 180));
-            pnlDailyPassengers.Controls.Add(lblDailyPassengersValue);
+            Label lblGunlukYolcularDeger = EtiketOlustur("867", 110, 50, new Font("Segoe UI", 36, FontStyle.Bold), Color.FromArgb(0, 127, 180));
+            pnlGunlukYolcular.Controls.Add(lblGunlukYolcularDeger);
 
-            Label lblDailyPassengersSubtitle = CreateLabel("Toplam Yolcu", 110, 110, new Font("Segoe UI", 9, FontStyle.Regular), Color.DimGray);
-            pnlDailyPassengers.Controls.Add(lblDailyPassengersSubtitle);
+            Label lblGunlukYolcularAltYazi = EtiketOlustur("Toplam Yolcu", 110, 110, new Font("Segoe UI", 9, FontStyle.Regular), Color.DimGray);
+            pnlGunlukYolcular.Controls.Add(lblGunlukYolcularAltYazi);
 
-            panelDesktopPane.Controls.Add(pnlDailyPassengers);
+            panelMasaustuAlani.Controls.Add(pnlGunlukYolcular);
 
             // Aktif Deniz Otobüsleri Kartı
-            Panel pnlActiveShips = CreatePanel(640, 20, 300, 150, Color.FromArgb(230, 242, 247));
+            Panel pnlAktifAraclar = PanelOlustur(640, 20, 300, 150, Color.FromArgb(230, 242, 247));
 
-            Label lblActiveShipsTitle = CreateLabel("Aktif Deniz Otobüsleri", 10, 10, new Font("Segoe UI", 12, FontStyle.Bold), Color.FromArgb(0, 127, 180));
-            pnlActiveShips.Controls.Add(lblActiveShipsTitle);
+            Label lblAktifAraclarBaslik = EtiketOlustur("Aktif Deniz Otobüsleri", 10, 10, new Font("Segoe UI", 12, FontStyle.Bold), Color.FromArgb(0, 127, 180));
+            pnlAktifAraclar.Controls.Add(lblAktifAraclarBaslik);
 
-            Label lblActiveShipsValue = CreateLabel("12", 125, 50, new Font("Segoe UI", 36, FontStyle.Bold), Color.FromArgb(0, 127, 180));
-            pnlActiveShips.Controls.Add(lblActiveShipsValue);
+            Label lblAktifAraclarDeger = EtiketOlustur("12", 125, 50, new Font("Segoe UI", 36, FontStyle.Bold), Color.FromArgb(0, 127, 180));
+            pnlAktifAraclar.Controls.Add(lblAktifAraclarDeger);
 
-            Label lblActiveShipsSubtitle = CreateLabel("Toplam 15 Araçtan", 100, 110, new Font("Segoe UI", 9, FontStyle.Regular), Color.DimGray);
-            pnlActiveShips.Controls.Add(lblActiveShipsSubtitle);
+            Label lblAktifAraclarAltYazi = EtiketOlustur("Toplam 15 Araçtan", 100, 110, new Font("Segoe UI", 9, FontStyle.Regular), Color.DimGray);
+            pnlAktifAraclar.Controls.Add(lblAktifAraclarAltYazi);
 
-            panelDesktopPane.Controls.Add(pnlActiveShips);
+            panelMasaustuAlani.Controls.Add(pnlAktifAraclar);
         }
 
         // Haftalık istatistikleri oluşturan metot
-        private void CreateWeeklyStats()
+        private void HaftalikIstatistikleriOlustur()
         {
             // Haftalık istatistikler panel
-            Panel pnlWeeklyStats = CreatePanel(20, 190, 920, 180, Color.FromArgb(230, 242, 247));
+            Panel pnlHaftalikIstatistikler = PanelOlustur(20, 190, 920, 180, Color.FromArgb(230, 242, 247));
 
             // Başlık
-            Label lblWeeklyStatsTitle = CreateLabel("Haftalık Yolcu İstatistikleri", 20, 10, new Font("Segoe UI", 12, FontStyle.Bold), Color.FromArgb(0, 127, 180));
-            pnlWeeklyStats.Controls.Add(lblWeeklyStatsTitle);
+            Label lblHaftalikIstatistiklerBaslik = EtiketOlustur("Haftalık Yolcu İstatistikleri", 20, 10, new Font("Segoe UI", 12, FontStyle.Bold), Color.FromArgb(0, 127, 180));
+            pnlHaftalikIstatistikler.Controls.Add(lblHaftalikIstatistiklerBaslik);
 
             // Grafik için çubuklarını temsil eden paneller
-            CreateBarChart(pnlWeeklyStats);
+            CubukGrafiginiOlustur(pnlHaftalikIstatistikler);
 
-            panelDesktopPane.Controls.Add(pnlWeeklyStats);
+            panelMasaustuAlani.Controls.Add(pnlHaftalikIstatistikler);
         }
 
         // Grafik çubuklarını oluşturan metot
-        private void CreateBarChart(Panel parentPanel)
+        private void CubukGrafiginiOlustur(Panel ebeveynPanel)
         {
-            string[] days = { "Pzt", "Sal", "Çar", "Per", "Cum", "Cmt", "Paz" };
-            int[] values = { 250, 180, 270, 220, 290, 160, 240 }; // Örnek değerler
+            string[] gunler = { "Pzt", "Sal", "Çar", "Per", "Cum", "Cmt", "Paz" };
+            int[] degerler = { 250, 180, 270, 220, 290, 160, 240 }; // Örnek değerler
 
-            int startX = 70;
-            int barWidth = 70;
-            int spacing = 30;
-            int maxHeight = 120;
-            int baseY = 160;
+            int baslangicX = 70;
+            int cubukGenislik = 70;
+            int aralik = 30;
+            int maksYukseklik = 120;
+            int tabanY = 160;
 
-            for (int i = 0; i < days.Length; i++)
+            for (int i = 0; i < gunler.Length; i++)
             {
                 // Çubuk yüksekliği (değere göre ölçeklendirme)
-                int barHeight = (int)(((double)values[i] / 300) * maxHeight);
+                int cubukYukseklik = (int)(((double)degerler[i] / 300) * maksYukseklik);
 
                 // Çubuk panel
-                Panel pnlBar = CreatePanel(startX + i * (barWidth + spacing), baseY - barHeight, barWidth, barHeight, Color.FromArgb(52, 152, 219));
-                parentPanel.Controls.Add(pnlBar);
+                Panel pnlCubuk = PanelOlustur(baslangicX + i * (cubukGenislik + aralik), tabanY - cubukYukseklik, cubukGenislik, cubukYukseklik, Color.FromArgb(52, 152, 219));
+                ebeveynPanel.Controls.Add(pnlCubuk);
 
                 // Gün etiketi
-                Label lblDay = CreateLabel(days[i], startX + i * (barWidth + spacing) + barWidth / 2 - 10, baseY + 5, new Font("Segoe UI", 9, FontStyle.Regular), Color.DimGray);
-                parentPanel.Controls.Add(lblDay);
+                Label lblGun = EtiketOlustur(gunler[i], baslangicX + i * (cubukGenislik + aralik) + cubukGenislik / 2 - 10, tabanY + 5, new Font("Segoe UI", 9, FontStyle.Regular), Color.DimGray);
+                ebeveynPanel.Controls.Add(lblGun);
             }
         }
 
         // Yaklaşan seferleri oluşturan metot
-        private void CreateUpcomingTrips()
+        private void YaklasmaSeferleriOlustur()
         {
             // Ana panel
-            Panel pnlUpcomingTrips = CreatePanel(20, 390, 920, 180, Color.FromArgb(230, 242, 247));
+            Panel pnlYaklasmaSeferler = PanelOlustur(20, 390, 920, 180, Color.FromArgb(230, 242, 247));
 
             // Başlık
-            Label lblUpcomingTripsTitle = CreateLabel("Yaklaşan Seferler", 20, 10, new Font("Segoe UI", 12, FontStyle.Bold), Color.FromArgb(0, 127, 180));
-            pnlUpcomingTrips.Controls.Add(lblUpcomingTripsTitle);
+            Label lblYaklasmaSeferlerBaslik = EtiketOlustur("Yaklaşan Seferler", 20, 10, new Font("Segoe UI", 12, FontStyle.Bold), Color.FromArgb(0, 127, 180));
+            pnlYaklasmaSeferler.Controls.Add(lblYaklasmaSeferlerBaslik);
 
             // Tablo başlıkları
-            string[] headers = { "Saat", "Güzergah", "Deniz Otobüsü", "Yolcu", "İşlem" };
-            int[] headerWidths = { 80, 200, 200, 100, 100 };
-            int headerY = 45;
-            int startX = 20;
+            string[] basliklar = { "Saat", "Güzergah", "Deniz Otobüsü", "Yolcu", "İşlem" };
+            int[] baslikGenislikleri = { 80, 200, 200, 100, 100 };
+            int baslikY = 45;
+            int baslangicX = 20;
 
-            for (int i = 0; i < headers.Length; i++)
+            for (int i = 0; i < basliklar.Length; i++)
             {
-                Label lblHeader = CreateLabel(headers[i], startX, headerY, new Font("Segoe UI", 10, FontStyle.Bold), Color.FromArgb(0, 71, 118));
-                pnlUpcomingTrips.Controls.Add(lblHeader);
-                startX += headerWidths[i] + 10;
+                Label lblBaslik = EtiketOlustur(basliklar[i], baslangicX, baslikY, new Font("Segoe UI", 10, FontStyle.Bold), Color.FromArgb(0, 71, 118));
+                pnlYaklasmaSeferler.Controls.Add(lblBaslik);
+                baslangicX += baslikGenislikleri[i] + 10;
             }
 
             // Tablo verileri
-            string[,] tripData = {
+            string[,] seferVerileri = {
                 { "09:30", "İstanbul - Bursa", "Deniz Otobüsü 3", "92/120 Yolcu" },
                 { "10:15", "Bursa - Yalova", "Deniz Otobüsü 7", "45/80 Yolcu" }
             };
 
-            for (int row = 0; row < 2; row++)
+            for (int satir = 0; satir < 2; satir++)
             {
-                startX = 20;
+                baslangicX = 20;
 
-                for (int col = 0; col < 4; col++)
+                for (int sutun = 0; sutun < 4; sutun++)
                 {
-                    Label lblCell = CreateLabel(tripData[row, col], startX, headerY + 35 + (row * 35), new Font("Segoe UI", 9, FontStyle.Regular), Color.Black);
-                    pnlUpcomingTrips.Controls.Add(lblCell);
-                    startX += headerWidths[col] + 10;
+                    Label lblHucre = EtiketOlustur(seferVerileri[satir, sutun], baslangicX, baslikY + 35 + (satir * 35), new Font("Segoe UI", 9, FontStyle.Regular), Color.Black);
+                    pnlYaklasmaSeferler.Controls.Add(lblHucre);
+                    baslangicX += baslikGenislikleri[sutun] + 10;
                 }
 
                 // Detay butonu
-                Button btnDetail = new Button();
-                btnDetail.Text = "Detaylar";
-                btnDetail.Size = new Size(80, 25);
-                btnDetail.Location = new Point(startX, headerY + 30 + (row * 35));
-                btnDetail.BackColor = Color.FromArgb(0, 127, 180);
-                btnDetail.ForeColor = Color.White;
-                btnDetail.FlatStyle = FlatStyle.Flat;
-                btnDetail.Tag = row;
-                btnDetail.Click += (s, e) => {
-                    MessageBox.Show($"Sefer detayları: {tripData[(int)((Button)s).Tag, 0]} - {tripData[(int)((Button)s).Tag, 1]}", "Sefer Detayı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Button btnDetay = new Button();
+                btnDetay.Text = "Detaylar";
+                btnDetay.Size = new Size(80, 25);
+                btnDetay.Location = new Point(baslangicX, baslikY + 30 + (satir * 35));
+                btnDetay.BackColor = Color.FromArgb(0, 127, 180);
+                btnDetay.ForeColor = Color.White;
+                btnDetay.FlatStyle = FlatStyle.Flat;
+                btnDetay.Tag = satir;
+                btnDetay.Click += (s, e) => {
+                    MessageBox.Show($"Sefer detayları: {seferVerileri[(int)((Button)s).Tag, 0]} - {seferVerileri[(int)((Button)s).Tag, 1]}", "Sefer Detayı", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 };
 
-                pnlUpcomingTrips.Controls.Add(btnDetail);
+                pnlYaklasmaSeferler.Controls.Add(btnDetay);
             }
 
-            panelDesktopPane.Controls.Add(pnlUpcomingTrips);
+            panelMasaustuAlani.Controls.Add(pnlYaklasmaSeferler);
         }
 
         // Panel oluşturan yardımcı metot
-        private Panel CreatePanel(int x, int y, int width, int height, Color backColor)
+        private Panel PanelOlustur(int x, int y, int genislik, int yukseklik, Color arkaRenk)
         {
             Panel panel = new Panel();
             panel.Location = new Point(x, y);
-            panel.Size = new Size(width, height);
-            panel.BackColor = backColor;
+            panel.Size = new Size(genislik, yukseklik);
+            panel.BackColor = arkaRenk;
             panel.BorderStyle = BorderStyle.FixedSingle;
             return panel;
         }
 
         // Etiket oluşturan yardımcı metot
-        private Label CreateLabel(string text, int x, int y, Font font, Color foreColor)
+        private Label EtiketOlustur(string metin, int x, int y, Font yazi, Color onRenk)
         {
-            Label label = new Label();
-            label.Text = text;
-            label.AutoSize = true;
-            label.Location = new Point(x, y);
-            label.Font = font;
-            label.ForeColor = foreColor;
-            return label;
+            Label etiket = new Label();
+            etiket.Text = metin;
+            etiket.AutoSize = true;
+            etiket.Location = new Point(x, y);
+            etiket.Font = yazi;
+            etiket.ForeColor = onRenk;
+            return etiket;
         }
 
         // Form Events
-        private void YoneticiForm_Load(object sender, EventArgs e)
+        private void YoneticiForm_Yukleme(object sender, EventArgs e)
         {
             // Form başlığını kullanıcı adıyla güncelle
-            this.Text = $"UDO - Hoş Geldiniz, {currentUser.TamAd()}";
+            this.Text = $"UDO - Hoş Geldiniz, {mevcutKullanici.TamAd()}";
 
             // Kullanıcı bilgilerini göster - Kullanıcı adını ve rolü ekleyerek güncelle
-            lblUserInfo.Text = $"Kullanıcı: {currentUser.TamAd()} Yönetici";
-            lblTitle.Text = "ANA SAYFA";
+            lblKullaniciBilgisi.Text = $"Kullanıcı: {mevcutKullanici.TamAd()} Yönetici";
+            lblBaslik.Text = "ANA SAYFA";
 
             // Tarih saat bilgisini güncelle
-            UpdateDateTime();
+            TarihZamaniGuncelle();
 
             // Kontrollerin konumlarını ayarla (üst üste binmeyi önlemek için)
-            AdjustControlPositions();
+            KontrolPozisyonlariniAyarla();
 
             // Durum çubuğunu güncelle
-            toolStripStatusLabel.Text = "Durum: Hazır | Son giriş: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
+            aracCubuguDurumEtiketi.Text = "Durum: Hazır | Son giriş: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
 
             // Dashboard'u yükle
-            LoadDashboard();
+            PanoyuYukle();
         }
 
         // Timer event - tarih ve saati güncellemek için
-        private void timer1_Tick(object sender, EventArgs e)
+        private void zamanlayici1_Tik(object sender, EventArgs e)
         {
-            UpdateDateTime();
+            TarihZamaniGuncelle();
         }
 
         // Tarih ve saat bilgisini güncelleyen metot
-        private void UpdateDateTime()
+        private void TarihZamaniGuncelle()
         {
-            lblDateTime.Text = DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
+            lblTarihSaat.Text = DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
         }
 
         // Form başlık çubuğunu taşıma işlevi
-        private void panelTitleBar_MouseDown(object sender, MouseEventArgs e)
+        private void panelBaslikCubugu_FareBasildi(object sender, MouseEventArgs e)
         {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
+            FareKaptureSerbestBirak();
+            MesajGonder(this.Handle, 0x112, 0xf012, 0);
         }
 
         // Kapat butonunun tıklama olayı
-        private void btnClose_Click(object sender, EventArgs e)
+        private void btnKapat_Tiklama(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
         // Ekranı kapla butonunun tıklama olayı
-        private void btnMaximize_Click(object sender, EventArgs e)
+        private void btnEkraniKapla_Tiklama(object sender, EventArgs e)
         {
             if (WindowState == FormWindowState.Normal)
                 this.WindowState = FormWindowState.Maximized;
@@ -397,89 +397,89 @@ namespace UDO.Forms
         }
 
         // Simge durumuna küçült butonunun tıklama olayı
-        private void btnMinimize_Click(object sender, EventArgs e)
+        private void btnSimgeDurumu_Tiklama(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
 
         // Ana Sayfa butonunun tıklama olayı
-        private void btnAnasayfa_Click(object sender, EventArgs e)
+        private void btnAnasayfa_Tiklama(object sender, EventArgs e)
         {
-            if (activeForm != null)
-                activeForm.Close();
+            if (aktifForm != null)
+                aktifForm.Close();
 
-            ActivateButton(sender);
-            lblTitle.Text = "ANA SAYFA";
-            LoadDashboard();
+            ButonuAktifEt(sender);
+            lblBaslik.Text = "ANA SAYFA";
+            PanoyuYukle();
         }
 
         // Personel Yönetimi butonunun tıklama olayı
-        private void btnPersonelYonetimi_Click(object sender, EventArgs e)
+        private void btnPersonelYonetimi_Tiklama(object sender, EventArgs e)
         {
             // Personel Yönetimi formunu açmak için
-            // OpenChildForm(new PersonelYonetimForm(), sender);
+            // AltFormuAc(new PersonelYonetimForm(), sender);
             MessageBox.Show("Personel Yönetimi modülü yakında eklenecek.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            lblTitle.Text = "PERSONEL YÖNETİMİ";
-            ActivateButton(sender);
+            lblBaslik.Text = "PERSONEL YÖNETİMİ";
+            ButonuAktifEt(sender);
         }
 
         // Sefer Yönetimi butonunun tıklama olayı
-        private void btnSeferYonetimi_Click(object sender, EventArgs e)
+        private void btnSeferYonetimi_Tiklama(object sender, EventArgs e)
         {
             // Sefer Yönetimi formunu açmak için
-            // OpenChildForm(new SeferYonetimForm(), sender);
+            // AltFormuAc(new SeferYonetimForm(), sender);
             MessageBox.Show("Sefer Yönetimi modülü yakında eklenecek.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            lblTitle.Text = "SEFER YÖNETİMİ";
-            ActivateButton(sender);
+            lblBaslik.Text = "SEFER YÖNETİMİ";
+            ButonuAktifEt(sender);
         }
 
         // Deniz Otobüsü Yönetimi butonunun tıklama olayı
-        private void btnAracYonetimi_Click(object sender, EventArgs e)
+        private void btnAracYonetimi_Tiklama(object sender, EventArgs e)
         {
             // Deniz Otobüsü Yönetimi formunu açmak için
-            // OpenChildForm(new DenizOtobusuYonetimForm(), sender);
+            // AltFormuAc(new DenizOtobusuYonetimForm(), sender);
             MessageBox.Show("Deniz Otobüsü Yönetimi modülü yakında eklenecek.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            lblTitle.Text = "DENİZ OTOBÜSÜ YÖNETİMİ";
-            ActivateButton(sender);
+            lblBaslik.Text = "DENİZ OTOBÜSÜ YÖNETİMİ";
+            ButonuAktifEt(sender);
         }
 
         // Müşteri Yönetimi butonunun tıklama olayı
-        private void btnMusteriYonetimi_Click(object sender, EventArgs e)
+        private void btnMusteriYonetimi_Tiklama(object sender, EventArgs e)
         {
             // Müşteri Yönetimi formunu açmak için
-            // OpenChildForm(new MusteriYonetimForm(), sender);
+            // AltFormuAc(new MusteriYonetimForm(), sender);
             MessageBox.Show("Müşteri Yönetimi modülü yakında eklenecek.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            lblTitle.Text = "MÜŞTERİ YÖNETİMİ";
-            ActivateButton(sender);
+            lblBaslik.Text = "MÜŞTERİ YÖNETİMİ";
+            ButonuAktifEt(sender);
         }
 
         // Raporlar butonunun tıklama olayı
-        private void btnRaporlar_Click(object sender, EventArgs e)
+        private void btnRaporlar_Tiklama(object sender, EventArgs e)
         {
             // Raporlar formunu açmak için
-            // OpenChildForm(new RaporlarForm(), sender);
+            // AltFormuAc(new RaporlarForm(), sender);
             MessageBox.Show("Raporlar modülü yakında eklenecek.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            lblTitle.Text = "RAPORLAR";
-            ActivateButton(sender);
+            lblBaslik.Text = "RAPORLAR";
+            ButonuAktifEt(sender);
         }
 
         // Ayarlar butonunun tıklama olayı
-        private void btnAyarlar_Click(object sender, EventArgs e)
+        private void btnAyarlar_Tiklama(object sender, EventArgs e)
         {
             // Ayarlar formunu açmak için
-            // OpenChildForm(new AyarlarForm(), sender);
+            // AltFormuAc(new AyarlarForm(), sender);
             MessageBox.Show("Ayarlar modülü yakında eklenecek.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            lblTitle.Text = "AYARLAR";
-            ActivateButton(sender);
+            lblBaslik.Text = "AYARLAR";
+            ButonuAktifEt(sender);
         }
 
         // Çıkış butonunun tıklama olayı
-        private void btnCikis_Click(object sender, EventArgs e)
+        private void btnCikis_Tiklama(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Uygulamadan çıkmak istediğinize emin misiniz?", "Çıkış",
+            DialogResult sonuc = MessageBox.Show("Uygulamadan çıkmak istediğinize emin misiniz?", "Çıkış",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (result == DialogResult.Yes)
+            if (sonuc == DialogResult.Yes)
             {
                 Application.Exit();
             }

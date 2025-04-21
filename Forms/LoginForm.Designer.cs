@@ -28,117 +28,104 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panelLeft = new Panel();
-            pictureBoxLogo = new PictureBox();
-            lblCompanySlogan = new Label();
-            lblWelcomeBack = new Label();
-            panelRight = new Panel();
-            lblSignUp = new LinkLabel();
-            lblNoAccount = new Label();
+            panelSol = new Panel();
+            resimKutusuLogo = new PictureBox();
+            lblSirketSlogani = new Label();
+            lblHosgeldiniz = new Label();
+            panelSag = new Panel();
+            lblKayitOl = new LinkLabel();
+            lblHesapYok = new Label();
             btnGirisYap = new Button();
             txtSifre = new TextBox();
             lblSifre = new Label();
             txtKullaniciAdi = new TextBox();
             lblKullaniciAdi = new Label();
-            lblDescription = new Label();
-            lblLoginTitle = new Label();
+            lblAciklama = new Label();
+            lblGirisBaslik = new Label();
             btnIptal = new Button();
-            panelLeft.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
-            panelRight.SuspendLayout();
+            panelSol.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)resimKutusuLogo).BeginInit();
+            panelSag.SuspendLayout();
             SuspendLayout();
             // 
-            // panelLeft
+            // panelSol
             // 
-            panelLeft.BackColor = Color.FromArgb(0, 122, 204);
-            panelLeft.Controls.Add(pictureBoxLogo);
-            panelLeft.Controls.Add(lblCompanySlogan);
-            panelLeft.Controls.Add(lblWelcomeBack);
-            panelLeft.Dock = DockStyle.Left;
-            panelLeft.Location = new Point(0, 0);
-            panelLeft.Margin = new Padding(4, 3, 4, 3);
-            panelLeft.Name = "panelLeft";
-            panelLeft.Size = new Size(408, 577);
-            panelLeft.TabIndex = 0;
+            panelSol.BackColor = Color.FromArgb(0, 122, 204);
+            panelSol.Controls.Add(resimKutusuLogo);
+            panelSol.Controls.Add(lblSirketSlogani);
+            panelSol.Controls.Add(lblHosgeldiniz);
+            panelSol.Dock = DockStyle.Left;
+            panelSol.Location = new Point(0, 0);
+            panelSol.Margin = new Padding(4, 3, 4, 3);
+            panelSol.Name = "panelSol";
+            panelSol.Size = new Size(408, 577);
+            panelSol.TabIndex = 0;
             // 
-            // pictureBoxLogo
+            // resimKutusuLogo
             // 
-            pictureBoxLogo.Location = new Point(134, 115);
-            pictureBoxLogo.Margin = new Padding(4, 3, 4, 3);
-            pictureBoxLogo.Name = "pictureBoxLogo";
-            pictureBoxLogo.Size = new Size(140, 138);
-            pictureBoxLogo.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBoxLogo.TabIndex = 2;
-            pictureBoxLogo.TabStop = false;
+            resimKutusuLogo.Location = new Point(134, 115);
+            resimKutusuLogo.Margin = new Padding(4, 3, 4, 3);
+            resimKutusuLogo.Name = "resimKutusuLogo";
+            resimKutusuLogo.Size = new Size(140, 138);
+            resimKutusuLogo.SizeMode = PictureBoxSizeMode.StretchImage;
+            resimKutusuLogo.TabIndex = 2;
+            resimKutusuLogo.TabStop = false;
             // 
-            // lblCompanySlogan
+            // lblSirketSlogani
             // 
-            lblCompanySlogan.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 162);
-            lblCompanySlogan.ForeColor = Color.WhiteSmoke;
-            lblCompanySlogan.Location = new Point(47, 335);
-            lblCompanySlogan.Margin = new Padding(4, 0, 4, 0);
-            lblCompanySlogan.Name = "lblCompanySlogan";
-            lblCompanySlogan.Size = new Size(315, 69);
-            lblCompanySlogan.TabIndex = 1;
-            lblCompanySlogan.Text = "Deniz Yolculuğunda Güvenilir Tercihiniz";
+            lblSirketSlogani.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            lblSirketSlogani.ForeColor = Color.WhiteSmoke;
+            lblSirketSlogani.Location = new Point(47, 335);
+            lblSirketSlogani.Margin = new Padding(4, 0, 4, 0);
+            lblSirketSlogani.Name = "lblSirketSlogani";
+            lblSirketSlogani.Size = new Size(315, 69);
+            lblSirketSlogani.TabIndex = 1;
+            lblSirketSlogani.Text = "Deniz Yolculuğunda Güvenilir Tercihiniz";
             // 
-            // lblWelcomeBack
+            // lblHosgeldiniz
             // 
-            lblWelcomeBack.AutoSize = true;
-            lblWelcomeBack.Font = new Font("Segoe UI", 35F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            lblWelcomeBack.ForeColor = Color.White;
-            lblWelcomeBack.Location = new Point(42, 254);
-            lblWelcomeBack.Margin = new Padding(4, 0, 4, 0);
-            lblWelcomeBack.Name = "lblWelcomeBack";
-            lblWelcomeBack.Size = new Size(301, 62);
-            lblWelcomeBack.TabIndex = 0;
-            lblWelcomeBack.Text = "Hoşgeldiniz!";
+            lblHosgeldiniz.AutoSize = true;
+            lblHosgeldiniz.Font = new Font("Segoe UI", 35F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            lblHosgeldiniz.ForeColor = Color.White;
+            lblHosgeldiniz.Location = new Point(42, 254);
+            lblHosgeldiniz.Margin = new Padding(4, 0, 4, 0);
+            lblHosgeldiniz.Name = "lblHosgeldiniz";
+            lblHosgeldiniz.Size = new Size(301, 62);
+            lblHosgeldiniz.TabIndex = 0;
+            lblHosgeldiniz.Text = "Hoşgeldiniz!";
             // 
-            // panelRight
+            // panelSag
             // 
-            panelRight.BackColor = Color.White;
-            panelRight.Controls.Add(lblSignUp);
-            panelRight.Controls.Add(lblNoAccount);
-            panelRight.Controls.Add(btnGirisYap);
-            panelRight.Controls.Add(txtSifre);
-            panelRight.Controls.Add(lblSifre);
-            panelRight.Controls.Add(txtKullaniciAdi);
-            panelRight.Controls.Add(lblKullaniciAdi);
-            panelRight.Controls.Add(lblDescription);
-            panelRight.Controls.Add(lblLoginTitle);
-            panelRight.Controls.Add(btnIptal);
-            panelRight.Dock = DockStyle.Fill;
-            panelRight.Location = new Point(408, 0);
-            panelRight.Margin = new Padding(4, 3, 4, 3);
-            panelRight.Name = "panelRight";
-            panelRight.Size = new Size(409, 577);
-            panelRight.TabIndex = 1;
+            panelSag.BackColor = Color.White;
+            panelSag.Controls.Add(lblKayitOl);
+            panelSag.Controls.Add(lblHesapYok);
+            panelSag.Controls.Add(btnGirisYap);
+            panelSag.Controls.Add(txtSifre);
+            panelSag.Controls.Add(lblSifre);
+            panelSag.Controls.Add(txtKullaniciAdi);
+            panelSag.Controls.Add(lblKullaniciAdi);
+            panelSag.Controls.Add(lblAciklama);
+            panelSag.Controls.Add(lblGirisBaslik);
+            panelSag.Controls.Add(btnIptal);
+            panelSag.Dock = DockStyle.Fill;
+            panelSag.Location = new Point(408, 0);
+            panelSag.Margin = new Padding(4, 3, 4, 3);
+            panelSag.Name = "panelSag";
+            panelSag.Size = new Size(409, 577);
+            panelSag.TabIndex = 1;
             // 
-            // lblSignUp
+            
+            // lblHesapYok
             // 
-            lblSignUp.AutoSize = true;
-            lblSignUp.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 162);
-            lblSignUp.LinkColor = Color.FromArgb(0, 122, 204);
-            lblSignUp.Location = new Point(209, 410);
-            lblSignUp.Margin = new Padding(4, 0, 4, 0);
-            lblSignUp.Name = "lblSignUp";
-            lblSignUp.Size = new Size(53, 17);
-            lblSignUp.TabIndex = 11;
-            lblSignUp.TabStop = true;
-            lblSignUp.Text = "Kayıt Ol";
-            lblSignUp.Click += lblSignUp_Click;
-            // 
-            // lblNoAccount
-            // 
-            lblNoAccount.AutoSize = true;
-            lblNoAccount.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 162);
-            lblNoAccount.ForeColor = Color.DimGray;
-            lblNoAccount.Location = new Point(117, 410);
-            lblNoAccount.Margin = new Padding(4, 0, 4, 0);
-            lblNoAccount.Name = "lblNoAccount";
-            lblNoAccount.Size = new Size(85, 17);
-            lblNoAccount.TabIndex = 10;
-            lblNoAccount.Text = "Hesabın yok?";
+            lblHesapYok.AutoSize = true;
+            lblHesapYok.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            lblHesapYok.ForeColor = Color.DimGray;
+            lblHesapYok.Location = new Point(117, 410);
+            lblHesapYok.Margin = new Padding(4, 0, 4, 0);
+            lblHesapYok.Name = "lblHesapYok";
+            lblHesapYok.Size = new Size(85, 17);
+            lblHesapYok.TabIndex = 10;
+            lblHesapYok.Text = "Hesabın yok?";
             // 
             // btnGirisYap
             // 
@@ -154,7 +141,7 @@
             btnGirisYap.TabIndex = 2;
             btnGirisYap.Text = "Giriş";
             btnGirisYap.UseVisualStyleBackColor = false;
-            btnGirisYap.Click += btnGirisYap_Click;
+            btnGirisYap.Click += btnGirisYap_Tiklama;
             // 
             // txtSifre
             // 
@@ -204,28 +191,28 @@
             lblKullaniciAdi.TabIndex = 5;
             lblKullaniciAdi.Text = "Kullanıcı Adı:";
             // 
-            // lblDescription
+            // lblAciklama
             // 
-            lblDescription.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 162);
-            lblDescription.ForeColor = Color.DimGray;
-            lblDescription.Location = new Point(47, 127);
-            lblDescription.Margin = new Padding(4, 0, 4, 0);
-            lblDescription.Name = "lblDescription";
-            lblDescription.Size = new Size(315, 46);
-            lblDescription.TabIndex = 4;
-            lblDescription.Text = "Uludağ Deniz Otobüsleri sistemine giriş yapmak için bilgilerinizi giriniz.";
+            lblAciklama.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            lblAciklama.ForeColor = Color.DimGray;
+            lblAciklama.Location = new Point(47, 127);
+            lblAciklama.Margin = new Padding(4, 0, 4, 0);
+            lblAciklama.Name = "lblAciklama";
+            lblAciklama.Size = new Size(315, 46);
+            lblAciklama.TabIndex = 4;
+            lblAciklama.Text = "Uludağ Deniz Otobüsleri sistemine giriş yapmak için bilgilerinizi giriniz.";
             // 
-            // lblLoginTitle
+            // lblGirisBaslik
             // 
-            lblLoginTitle.AutoSize = true;
-            lblLoginTitle.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            lblLoginTitle.ForeColor = Color.FromArgb(0, 122, 204);
-            lblLoginTitle.Location = new Point(43, 69);
-            lblLoginTitle.Margin = new Padding(4, 0, 4, 0);
-            lblLoginTitle.Name = "lblLoginTitle";
-            lblLoginTitle.Size = new Size(88, 45);
-            lblLoginTitle.TabIndex = 3;
-            lblLoginTitle.Text = "Giriş";
+            lblGirisBaslik.AutoSize = true;
+            lblGirisBaslik.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            lblGirisBaslik.ForeColor = Color.FromArgb(0, 122, 204);
+            lblGirisBaslik.Location = new Point(43, 69);
+            lblGirisBaslik.Margin = new Padding(4, 0, 4, 0);
+            lblGirisBaslik.Name = "lblGirisBaslik";
+            lblGirisBaslik.Size = new Size(88, 45);
+            lblGirisBaslik.TabIndex = 3;
+            lblGirisBaslik.Text = "Giriş";
             // 
             // btnIptal
             // 
@@ -242,7 +229,7 @@
             btnIptal.Text = "İptal";
             btnIptal.UseVisualStyleBackColor = false;
             btnIptal.Visible = false;
-            btnIptal.Click += btnIptal_Click;
+            btnIptal.Click += btnIptal_Tiklama;
             // 
             // LoginForm
             // 
@@ -250,40 +237,40 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(817, 577);
-            Controls.Add(panelRight);
-            Controls.Add(panelLeft);
+            Controls.Add(panelSag);
+            Controls.Add(panelSol);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(4, 3, 4, 3);
             MaximizeBox = false;
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "UDO - Uludağ Deniz Otobüsleri";
-            Load += LoginForm_Load;
-            panelLeft.ResumeLayout(false);
-            panelLeft.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();
-            panelRight.ResumeLayout(false);
-            panelRight.PerformLayout();
+            Load += GirisForm_Yukleme;
+            panelSol.ResumeLayout(false);
+            panelSol.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)resimKutusuLogo).EndInit();
+            panelSag.ResumeLayout(false);
+            panelSag.PerformLayout();
             ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panelLeft;
-        private System.Windows.Forms.Label lblWelcomeBack;
-        private System.Windows.Forms.Panel panelRight;
-        private System.Windows.Forms.Label lblCompanySlogan;
-        private System.Windows.Forms.Label lblLoginTitle;
-        private System.Windows.Forms.Label lblDescription;
+        private System.Windows.Forms.Panel panelSol;
+        private System.Windows.Forms.Label lblHosgeldiniz;
+        private System.Windows.Forms.Panel panelSag;
+        private System.Windows.Forms.Label lblSirketSlogani;
+        private System.Windows.Forms.Label lblGirisBaslik;
+        private System.Windows.Forms.Label lblAciklama;
         private System.Windows.Forms.Label lblKullaniciAdi;
         private System.Windows.Forms.TextBox txtKullaniciAdi;
         private System.Windows.Forms.TextBox txtSifre;
         private System.Windows.Forms.Label lblSifre;
         private System.Windows.Forms.Button btnGirisYap;
-        private System.Windows.Forms.Label lblNoAccount;
-        private System.Windows.Forms.LinkLabel lblSignUp;
-        private System.Windows.Forms.PictureBox pictureBoxLogo;
+        private System.Windows.Forms.Label lblHesapYok;
+        private System.Windows.Forms.LinkLabel lblKayitOl;
+        private System.Windows.Forms.PictureBox resimKutusuLogo;
         private System.Windows.Forms.Button btnIptal;
     }
 }
