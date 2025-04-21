@@ -416,11 +416,14 @@ namespace UDO.Forms
         // Personel Yönetimi butonunun tıklama olayı
         private void btnPersonelYonetimi_Tiklama(object sender, EventArgs e)
         {
-            // Personel Yönetimi formunu açmak için
-            // AltFormuAc(new PersonelYonetimForm(), sender);
-            MessageBox.Show("Personel Yönetimi modülü yakında eklenecek.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // Eski kod:
+            // MessageBox.Show("Personel Yönetimi modülü yakında eklenecek.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // lblBaslik.Text = "PERSONEL YÖNETİMİ";
+            // ButonuAktifEt(sender);
+
+            // Yeni kod:
+            AltFormuAc(new PersonelYonetimForm(), sender);
             lblBaslik.Text = "PERSONEL YÖNETİMİ";
-            ButonuAktifEt(sender);
         }
 
         // Sefer Yönetimi butonunun tıklama olayı
