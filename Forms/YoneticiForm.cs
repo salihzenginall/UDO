@@ -306,7 +306,8 @@ namespace UDO.Forms
                 btnDetay.ForeColor = Color.White;
                 btnDetay.FlatStyle = FlatStyle.Flat;
                 btnDetay.Tag = satir;
-                btnDetay.Click += (s, e) => {
+                btnDetay.Click += (s, e) =>
+                {
                     MessageBox.Show($"Sefer detayları: {seferVerileri[(int)((Button)s).Tag, 0]} - {seferVerileri[(int)((Button)s).Tag, 1]}", "Sefer Detayı", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 };
 
@@ -416,23 +417,13 @@ namespace UDO.Forms
         // Personel Yönetimi butonunun tıklama olayı
         private void btnPersonelYonetimi_Tiklama(object sender, EventArgs e)
         {
-            // Eski kod:
-            // MessageBox.Show("Personel Yönetimi modülü yakında eklenecek.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            // lblBaslik.Text = "PERSONEL YÖNETİMİ";
-            // ButonuAktifEt(sender);
 
-            // Yeni kod:
             AltFormuAc(new PersonelYonetimForm(), sender);
             lblBaslik.Text = "PERSONEL YÖNETİMİ";
         }
 
         // Sefer Yönetimi butonunun tıklama olayı
-        private void btnSeferYonetimi_Tiklama(object sender, EventArgs e)
-        {
-            // Sefer Yönetimi formunu aç
-            AltFormuAc(new SeferYonetimForm(mevcutKullanici), sender);
-            lblBaslik.Text = "SEFER YÖNETİMİ";
-        }
+        
 
         // Deniz Otobüsü Yönetimi butonunun tıklama olayı
         private void btnAracYonetimi_Tiklama(object sender, EventArgs e)
@@ -484,6 +475,14 @@ namespace UDO.Forms
             {
                 Application.Exit();
             }
+        }
+
+        private void btnSeferYonetimi_Click(object sender, EventArgs e)
+        {
+            // Sefer Yönetimi formunu aç
+            AltFormuAc(new SeferYonetimForm(mevcutKullanici), sender);
+            lblBaslik.Text = "SEFER YÖNETİMİ";
+
         }
     }
 }
