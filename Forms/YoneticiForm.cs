@@ -429,11 +429,9 @@ namespace UDO.Forms
         // Sefer Yönetimi butonunun tıklama olayı
         private void btnSeferYonetimi_Tiklama(object sender, EventArgs e)
         {
-            // Sefer Yönetimi formunu açmak için
-            // AltFormuAc(new SeferYonetimForm(), sender);
-            MessageBox.Show("Sefer Yönetimi modülü yakında eklenecek.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // Sefer Yönetimi formunu aç
+            AltFormuAc(new SeferYonetimForm(mevcutKullanici), sender);
             lblBaslik.Text = "SEFER YÖNETİMİ";
-            ButonuAktifEt(sender);
         }
 
         // Deniz Otobüsü Yönetimi butonunun tıklama olayı
