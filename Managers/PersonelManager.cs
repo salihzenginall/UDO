@@ -195,7 +195,7 @@ namespace UDO.Managers
             return sonuc > 0;
         }
 
-        // Rol ID'sine göre rol getirme metodu
+        // Rol ID'sine göre rol getirme metoduef
         public DataTable RolleriGetir()
         {
             string sorgu = "SELECT RolID, RolAdi FROM Roller WHERE RolAdi = 'Personel'";
