@@ -423,7 +423,12 @@ namespace UDO.Forms
         }
 
         // Sefer Yönetimi butonunun tıklama olayı
-        
+        private void btnSeferYonetimi_Tiklama(object sender, EventArgs e)
+        {
+
+            AltFormuAc(new PersonelYonetimForm(), sender);
+            lblBaslik.Text = "SEFER YÖNETİMİ";
+        }
 
         // Deniz Otobüsü Yönetimi butonunun tıklama olayı
         private void btnAracYonetimi_Tiklama(object sender, EventArgs e)
