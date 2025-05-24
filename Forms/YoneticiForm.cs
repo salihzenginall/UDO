@@ -423,16 +423,20 @@ namespace UDO.Forms
         }
 
         // Sefer Yönetimi butonunun tıklama olayı
-        
+        private void btnSeferYonetimi_Click(object sender, EventArgs e)
+        {
+            // Sefer Yönetimi formunu aç
+            AltFormuAc(new SeferYonetimForm(mevcutKullanici), sender);
+            lblBaslik.Text = "SEFER YÖNETİMİ";
+
+        }
 
         // Deniz Otobüsü Yönetimi butonunun tıklama olayı
         private void btnAracYonetimi_Tiklama(object sender, EventArgs e)
         {
             // Deniz Otobüsü Yönetimi formunu açmak için
-            // AltFormuAc(new DenizOtobusuYonetimForm(), sender);
-            MessageBox.Show("Deniz Otobüsü Yönetimi modülü yakında eklenecek.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            AltFormuAc(new DenizOtobusuYonetimForm(), sender);
             lblBaslik.Text = "DENİZ OTOBÜSÜ YÖNETİMİ";
-            ButonuAktifEt(sender);
         }
 
         // Müşteri Yönetimi butonunun tıklama olayı
@@ -477,12 +481,6 @@ namespace UDO.Forms
             }
         }
 
-        private void btnSeferYonetimi_Click(object sender, EventArgs e)
-        {
-            // Sefer Yönetimi formunu aç
-            AltFormuAc(new SeferYonetimForm(mevcutKullanici), sender);
-            lblBaslik.Text = "SEFER YÖNETİMİ";
-
-        }
+        
     }
 }
