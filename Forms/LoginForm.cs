@@ -2,6 +2,7 @@ using System;
 using System.Windows.Forms;
 using UDO.Managers;
 using UDO.Models;
+using UDO.Forms; // PersonelForm'u kullanmak için ekleyin
 
 namespace UDO.Forms
 {
@@ -27,6 +28,16 @@ namespace UDO.Forms
                 txtKullaniciAdi.Text = string.Empty;
                 txtSifre.Text = string.Empty;
                 txtKullaniciAdi.Focus();
+
+                // TextBox'lara odaklanma ve odak kaybetme olaylarýný ekle
+                txtKullaniciAdi.GotFocus += TextBox_GotFocus;
+                txtKullaniciAdi.LostFocus += TextBox_LostFocus;
+                txtSifre.GotFocus += TextBox_GotFocus;
+                txtSifre.LostFocus += TextBox_LostFocus;
+
+                // Baþlangýç ipucu metinlerini ayarla
+                TextBox_LostFocus(txtKullaniciAdi, EventArgs.Empty);
+                TextBox_LostFocus(txtSifre, EventArgs.Empty);
             }
             catch (Exception ex)
             {
@@ -37,14 +48,14 @@ namespace UDO.Forms
         private void btnGirisYap_Tiklama(object sender, EventArgs e)
         {
             // Kullanýcý giriþ bilgilerini kontrol et
-            if (string.IsNullOrEmpty(txtKullaniciAdi.Text))
+            if (string.IsNullOrEmpty(txtKullaniciAdi.Text) || txtKullaniciAdi.Text == "Kullanýcý adýnýzý giriniz")
             {
                 MessageBox.Show("Kullanýcý adý boþ býrakýlamaz!", "Uyarý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtKullaniciAdi.Focus();
                 return;
             }
 
-            if (string.IsNullOrEmpty(txtSifre.Text))
+            if (string.IsNullOrEmpty(txtSifre.Text) || txtSifre.Text == "Þifrenizi giriniz")
             {
                 MessageBox.Show("Þifre boþ býrakýlamaz!", "Uyarý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtSifre.Focus();
@@ -73,12 +84,11 @@ namespace UDO.Forms
                     }
                     else if (kullanici.IsPersonel())
                     {
-                        // Personel formunu aç (henüz uygulanmadý)
-                        MessageBox.Show("Personel paneli yakýnda eklenecek.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        // PersonelForm personelForm = new PersonelForm(kullanici);
-                        // this.Hide();
-                        // personelForm.ShowDialog();
-                        // this.Close();
+                        // Personel formunu aç
+                        PersonelForm personelForm = new PersonelForm(kullanici);
+                        this.Hide();
+                        personelForm.ShowDialog();
+                        this.Close();
                     }
                     else if (kullanici.IsMusteri())
                     {
@@ -160,7 +170,7 @@ namespace UDO.Forms
                 }
                 else if (textBox == txtSifre && string.IsNullOrWhiteSpace(textBox.Text))
                 {
-                    textBox.PasswordChar = '\0';
+                    textBox.PasswordChar = '\0'; // Karakteri görünür yap
                     textBox.Text = "Þifrenizi giriniz";
                     textBox.ForeColor = System.Drawing.Color.DimGray;
                 }
