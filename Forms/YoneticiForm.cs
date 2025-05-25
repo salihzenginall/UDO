@@ -451,10 +451,9 @@ namespace UDO.Forms
         private void btnRaporlar_Tiklama(object sender, EventArgs e)
         {
             // Raporlar formunu açmak için
-            // AltFormuAc(new RaporlarForm(), sender);
-            MessageBox.Show("Raporlar modülü yakında eklenecek.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+             AltFormuAc(new RaporlarForm(), sender);
             lblBaslik.Text = "RAPORLAR";
-            ButonuAktifEt(sender);
+           
         }
 
         // Ayarlar butonunun tıklama olayı
