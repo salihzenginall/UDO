@@ -443,10 +443,8 @@ namespace UDO.Forms
         private void btnMusteriYonetimi_Tiklama(object sender, EventArgs e)
         {
             // Müşteri Yönetimi formunu açmak için
-            // AltFormuAc(new MusteriYonetimForm(), sender);
-            MessageBox.Show("Müşteri Yönetimi modülü yakında eklenecek.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            AltFormuAc(new MusteriYonetimForm(), sender);
             lblBaslik.Text = "MÜŞTERİ YÖNETİMİ";
-            ButonuAktifEt(sender);
         }
 
         // Raporlar butonunun tıklama olayı

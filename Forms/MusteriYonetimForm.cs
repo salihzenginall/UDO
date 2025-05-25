@@ -21,10 +21,22 @@ namespace UDO.Forms
 
         private void MusteriYonetimForm_Load(object sender, EventArgs e)
         {
-            // Form yüklendiğinde müşteri listesini getir
-            MusteriListesiniYukle();
-            // Butonların başlangıç durumlarını ayarla
-            ButonDurumlariniAyarla(false);
+            try
+            {
+                MessageBox.Show("Form Load başladı");
+
+                // Form yüklendiğinde müşteri listesini getir
+                //MusteriListesiniYukle(); // GEÇİCİ OLARAK COMMENT ET
+
+                MessageBox.Show("Form Load tamamlandı");
+
+                // Butonların başlangıç durumlarını ayarla
+                ButonDurumlariniAyarla(false);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Form Load Hatası: " + ex.Message + "\n\nStack Trace: " + ex.StackTrace);
+            }
         }
 
         private void MusteriListesiniYukle()
