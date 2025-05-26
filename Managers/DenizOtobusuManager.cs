@@ -238,16 +238,18 @@ namespace UDO.Managers
         }
 
         // Bakım zamanı gelenler
-        public DataTable BakimZamaniGelenler()
+         public DataTable BakimZamaniGelenler()
         {
-            string sorgu = @"SELECT DenizOtobusuID, DenizOtobusuAdi, Model, SonBakimTarihi,
-                           DATEDIFF(DAY, SonBakimTarihi, GETDATE()) AS GunSayisi
-                           FROM DenizOtobusleri
-                           WHERE Aktif = 1 AND 
-                           (SonBakimTarihi IS NULL OR DATEDIFF(MONTH, SonBakimTarihi, GETDATE()) >= 6)
-                           ORDER BY SonBakimTarihi";
+            string sorgu = @"SELECT DenizOtobusuID, DenizOtobusuAdi, Model, Kapasite, UretimYili,
+                   Marka, SeriNumarasi, YakitKapasitesi, MotorTipi, MaxHiz, Aktif,
+                   KayitTarihi, SonBakimTarihi, SonMuayeneTarihi, Aciklama, DurumNotu,
+                   DATEDIFF(DAY, SonBakimTarihi, GETDATE()) AS GunSayisi
+                   FROM DenizOtobusleri
+                   WHERE Aktif = 1 AND 
+                   (SonBakimTarihi IS NULL OR DATEDIFF(MONTH, SonBakimTarihi, GETDATE()) >= 6)
+                   ORDER BY SonBakimTarihi";
 
             return dbConnection.ExecuteQuery(sorgu);
-        }
+         }
     }
 }
